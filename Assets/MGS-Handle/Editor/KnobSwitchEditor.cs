@@ -42,7 +42,7 @@ namespace Developer.Handle
                 else
                     return script.transform.up;
             }
-        }//zeroAxis_end
+        }
         #endregion
 
         #region Protected Method
@@ -65,14 +65,14 @@ namespace Developer.Handle
             if (script.adsorbent)
             {
                 Handles.color = blue;
-                foreach(var adsorbent in script.adsorbentAngles)
+                foreach (var adsorbent in script.adsorbentAngles)
                 {
                     var adsorbentAxis = Quaternion.AngleAxis(adsorbent, script.transform.forward) * zeroAxis;
                     var adsorbentPosition = script.transform.position + adsorbentAxis.normalized * areaRadius;
                     Handles.SphereCap(0, adsorbentPosition, Quaternion.identity, nodeSize);
                 }
-            }//if()_end
-        }//OnSceneGUI()_end
+            }
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

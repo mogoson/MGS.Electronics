@@ -88,8 +88,8 @@ namespace Developer.Handle
                 if (transform.parent)
                     forward = transform.parent.InverseTransformDirection(forward);
                 return forward;
-            }//get_end
-        }//aixs_end
+            }
+        }
 
         /// <summary>
         /// Button switch up event.
@@ -123,7 +123,7 @@ namespace Developer.Handle
             startPosition = transform.localPosition;
             if (lightRender)
                 defaultMat = lightRender.material;
-        }//Awake()_end
+        }
 
         /// <summary>
         /// Response mouse left button down.
@@ -139,7 +139,7 @@ namespace Developer.Handle
                 lightRender.material = lightMaterial;
             if (switchDownEvent != null)
                 switchDownEvent();
-        }//OnMouseDown()_end
+        }
 
         /// <summary>
         /// Response mouse left button up.
@@ -162,11 +162,11 @@ namespace Developer.Handle
                 currentOffset = 0;
                 if (switchUpEvent != null)
                     switchUpEvent();
-            }//if()_end
+            }
             TranslateButton(currentOffset);
             if (highLight && !isLock)
                 lightRender.material = defaultMat;
-        }//OnMouseUp()_end
+        }
 
         /// <summary>
         /// Translate button switch to target position.
@@ -175,7 +175,7 @@ namespace Developer.Handle
         protected virtual void TranslateButton(float offset)
         {
             transform.localPosition = startPosition + moveAxis.normalized * offset;
-        }//Trans...()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

@@ -41,8 +41,8 @@ namespace Developer.Handle
                 }
                 else
                     return script.transform.position;
-            }//get_end
-        }//zeroPoint_end
+            }
+        }
         #endregion
 
         #region Protected Method
@@ -50,11 +50,11 @@ namespace Developer.Handle
         {
             Handles.color = blue;
             Handles.SphereCap(0, zeroPoint, Quaternion.identity, nodeSize);
-            if(script.selfLock)
+            if (script.selfLock)
                 Handles.SphereCap(0, zeroPoint + script.transform.forward * (script.downOffset * script.lockPercent), Quaternion.identity, nodeSize);
             Handles.SphereCap(0, script.transform.position, Quaternion.identity, nodeSize);
             DrawArrow(zeroPoint, script.transform.forward, script.downOffset, nodeSize, string.Empty, blue);
-        }//OnSceneGUI()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

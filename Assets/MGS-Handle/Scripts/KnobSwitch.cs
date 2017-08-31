@@ -91,7 +91,7 @@ namespace Developer.Handle
                 else
                     return 0;
             }
-        }//percent_end
+        }
 
         /// <summary>
         /// Knob switch drag event.
@@ -113,7 +113,7 @@ namespace Developer.Handle
         protected virtual void Awake()
         {
             startAngles = transform.localEulerAngles;
-        }//Awake()_end
+        }
 
         /// <summary>
         /// Response mouse left button drag.
@@ -128,7 +128,7 @@ namespace Developer.Handle
             RotateKnob(angle);
             if (switchDragEvent != null)
                 switchDragEvent();
-        }//MouseD...()_end
+        }
 
         /// <summary>
         /// Response mouse left button up.
@@ -151,12 +151,12 @@ namespace Developer.Handle
                     tempNear = deltaAngle;
                     nearAngle = adsorbentAngle;
                 }
-            }//foreach()_end
+            }
             angle = nearAngle;
             RotateKnob(angle);
             if (switchAdsorbentEvent != null)
                 switchAdsorbentEvent();
-        }//OnMouseUp()_end
+        }
 
         /// <summary>
         /// Rotate knob switch to target angle.
@@ -166,7 +166,7 @@ namespace Developer.Handle
         {
             var euler = startAngles + Vector3.back * rotateAngle;
             transform.localRotation = Quaternion.Euler(euler);
-        }//RotateKnob()_end
+        }
 
         /// <summary>
         /// Get mouse input.
@@ -178,7 +178,7 @@ namespace Developer.Handle
                 return Input.GetAxis("Mouse X");
             else
                 return Input.GetAxis("Mouse Y");
-        }//GetM...()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

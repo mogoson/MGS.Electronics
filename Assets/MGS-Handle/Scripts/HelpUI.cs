@@ -32,7 +32,6 @@ namespace Developer.Handle
         #endregion
 
         #region Private Method
-        //Draw the help text.
         void OnGUI()
         {
             GUILayout.Space(yOfset);
@@ -40,7 +39,7 @@ namespace Developer.Handle
             GUILayout.Space(xOfset);
             GUILayout.Label(text);
             GUILayout.EndHorizontal();
-        }//OnGUI()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

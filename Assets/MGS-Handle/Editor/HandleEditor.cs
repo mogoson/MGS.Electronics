@@ -21,7 +21,7 @@ namespace Developer.Handle
 {
     using UnityEditor;
     using UnityEngine;
-    
+
     public class HandleEditor : Editor
     {
         #region Property and Field
@@ -53,7 +53,7 @@ namespace Developer.Handle
 
             GUI.color = gC;
             Handles.color = hC;
-        }//DrawArrow()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

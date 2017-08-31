@@ -42,7 +42,7 @@ namespace Developer.Handle
                 else
                     return -script.transform.forward;
             }
-        }//zeroAxis_end
+        }
         protected Vector3 crossAxis { get { return Vector3.Cross(zeroAxis, new Vector3(zeroAxis.z, zeroAxis.y, zeroAxis.x)); } }
         #endregion
 
@@ -56,7 +56,7 @@ namespace Developer.Handle
             DrawArrow(script.transform.position, -script.transform.forward, arrowLength, nodeSize, string.Empty, blue);
             Handles.color = transparentBlue;
             Handles.DrawSolidArc(script.transform.position, zeroAxis, fromAxis, 360, areaRadius);
-        }//OnSceneGUI()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

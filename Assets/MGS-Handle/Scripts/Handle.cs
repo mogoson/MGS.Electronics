@@ -25,10 +25,10 @@ namespace Developer.Handle
     public enum MouseAxis
     {
         MouseX, MouseY
-    }//enum_end
+    }
 
     /// <summary>
     /// Handle Event.
     /// </summary>
     public delegate void HandleEvent();
-}//namespace_end
+}

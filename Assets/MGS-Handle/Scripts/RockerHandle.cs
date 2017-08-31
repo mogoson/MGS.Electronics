@@ -81,7 +81,7 @@ namespace Developer.Handle
         protected virtual void Awake()
         {
             startAngles = transform.localEulerAngles;
-        }//Awake()_end
+        }
 
         /// <summary>
         /// Drag handle.
@@ -98,7 +98,7 @@ namespace Developer.Handle
             RotateHandle(angles);
             if (handleDragEvent != null)
                 handleDragEvent();
-        }//OnMouseDrag()_end
+        }
 
         /// <summary>
         /// Release handle.
@@ -111,7 +111,7 @@ namespace Developer.Handle
                 InvokeRepeating("RevertHandle", 0, Time.fixedDeltaTime);
             if (handleReleaseEvent != null)
                 handleReleaseEvent();
-        }//OnMouseUp()_end
+        }
 
         /// <summary>
         /// Revert handle to default.
@@ -126,7 +126,7 @@ namespace Developer.Handle
             }//if()_end
             angles = Vector3.MoveTowards(angles, Vector3.zero, revertSpeed * Time.deltaTime);
             RotateHandle(angles);
-        }//RevertHandle()_end
+        }
 
         /// <summary>
         /// Rotate handle.
@@ -136,7 +136,7 @@ namespace Developer.Handle
         {
             var euler = startAngles + eulerAngles;
             transform.localRotation = Quaternion.Euler(euler);
-        }//RockHandle()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}
