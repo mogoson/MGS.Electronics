@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson tech. Co., Ltd.
+ *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
  *  FileName: HandleEditor.cs
- *  Author: Mogoson   Version: 1.0   Date: 4/1/2016
+ *  Author: Mogoson   Version: 0.1.0   Date: 4/1/2016
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
  *  File Description:
@@ -14,14 +14,14 @@
  *     1.
  *  History:
  *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     4/1/2016       1.0        Build this file.
+ *     1.     Mogoson     4/1/2016       0.1.0        Create this file.
  *************************************************************************/
+
+using UnityEditor;
+using UnityEngine;
 
 namespace Developer.Handle
 {
-    using UnityEditor;
-    using UnityEngine;
-
     public class HandleEditor : Editor
     {
         #region Property and Field
@@ -48,11 +48,29 @@ namespace Developer.Handle
 
             var end = start + direction.normalized * length;
             Handles.DrawLine(start, end);
-            Handles.SphereCap(0, end, Quaternion.identity, size);
+            DrawSphereCap(end, Quaternion.identity, size);
             Handles.Label(end, text);
 
             GUI.color = gC;
             Handles.color = hC;
+        }
+
+        protected void DrawSphereCap(Vector3 position, Quaternion rotation, float size)
+        {
+#if UNITY_5_5_OR_NEWER
+            Handles.SphereHandleCap(0, position, rotation, size, EventType.Ignore);
+#else
+            Handles.SphereCap(0, position, rotation, size);
+#endif
+        }
+
+        protected void DrawCircleCap(Vector3 position, Quaternion rotation, float size)
+        {
+#if UNITY_5_5_OR_NEWER
+            Handles.CircleHandleCap(0, position, rotation, size, EventType.Ignore);
+#else
+            Handles.CircleCap(0, position, rotation, size);
+#endif
         }
         #endregion
     }

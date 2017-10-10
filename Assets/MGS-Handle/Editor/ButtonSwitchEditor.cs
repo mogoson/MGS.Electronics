@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson tech. Co., Ltd.
+ *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
  *  FileName: ButtonSwitchEditor.cs
- *  Author: Mogoson   Version: 1.0   Date: 4/1/2016
+ *  Author: Mogoson   Version: 0.1.0   Date: 4/1/2016
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
  *  File Description:
@@ -14,14 +14,14 @@
  *     1.
  *  History:
  *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     4/1/2016       1.0        Build this file.
+ *     1.     Mogoson     4/1/2016       0.1.0        Create this file.
  *************************************************************************/
+
+using UnityEditor;
+using UnityEngine;
 
 namespace Developer.Handle
 {
-    using UnityEditor;
-    using UnityEngine;
-
     [CustomEditor(typeof(ButtonSwitch), true)]
     [CanEditMultipleObjects]
     public class ButtonSwitchEditor : HandleEditor
@@ -49,10 +49,10 @@ namespace Developer.Handle
         protected virtual void OnSceneGUI()
         {
             Handles.color = blue;
-            Handles.SphereCap(0, zeroPoint, Quaternion.identity, nodeSize);
+            DrawSphereCap(zeroPoint, Quaternion.identity, nodeSize);
             if (script.selfLock)
-                Handles.SphereCap(0, zeroPoint + script.transform.forward * (script.downOffset * script.lockPercent), Quaternion.identity, nodeSize);
-            Handles.SphereCap(0, script.transform.position, Quaternion.identity, nodeSize);
+                DrawSphereCap(zeroPoint + script.transform.forward * (script.downOffset * script.lockPercent), Quaternion.identity, nodeSize);
+            DrawSphereCap(script.transform.position, Quaternion.identity, nodeSize);
             DrawArrow(zeroPoint, script.transform.forward, script.downOffset, nodeSize, string.Empty, blue);
         }
         #endregion

@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson tech. Co., Ltd.
+ *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
  *  FileName: Handle.cs
- *  Author: Mogoson   Version: 1.0   Date: 3/31/2016
+ *  Author: Mogoson   Version: 0.1.0   Date: 3/31/2016
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
  *  File Description:
@@ -14,7 +14,7 @@
  *     1.
  *  History:
  *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     3/31/2016       1.0        Build this file.
+ *     1.     Mogoson     3/31/2016       0.1.0        Create this file.
  *************************************************************************/
 
 namespace Developer.Handle

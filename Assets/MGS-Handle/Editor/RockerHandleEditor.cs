@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson tech. Co., Ltd.
+ *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
  *  FileName: RockerHandleEditor.cs
- *  Author: Mogoson   Version: 1.0   Date: 4/1/2016
+ *  Author: Mogoson   Version: 0.1.0   Date: 4/1/2016
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
  *  File Description:
@@ -14,14 +14,14 @@
  *     1.
  *  History:
  *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     4/1/2016       1.0        Build this file.
+ *     1.     Mogoson     4/1/2016       0.1.0        Create this file.
  *************************************************************************/
+
+using UnityEditor;
+using UnityEngine;
 
 namespace Developer.Handle
 {
-    using UnityEditor;
-    using UnityEngine;
-
     [CustomEditor(typeof(RockerHandle), true)]
     [CanEditMultipleObjects]
     public class RockerHandleEditor : HandleEditor
@@ -51,7 +51,7 @@ namespace Developer.Handle
         {
             var fromAxis = Quaternion.AngleAxis(script.radiusAngle, crossAxis) * zeroAxis;
             Handles.color = blue;
-            Handles.SphereCap(0, script.transform.position, Quaternion.identity, nodeSize);
+            DrawSphereCap(script.transform.position, Quaternion.identity, nodeSize);
             Handles.DrawWireArc(script.transform.position, zeroAxis, fromAxis, 360, areaRadius);
             DrawArrow(script.transform.position, -script.transform.forward, arrowLength, nodeSize, string.Empty, blue);
             Handles.color = transparentBlue;
