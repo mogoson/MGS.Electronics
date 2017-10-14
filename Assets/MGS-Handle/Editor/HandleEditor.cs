@@ -18,16 +18,12 @@ namespace Developer.Handle
     public class HandleEditor : Editor
     {
         #region Property and Field
-        #region Color
-        protected Color blue = new Color(0, 1, 1, 1);
-        protected Color transparentBlue = new Color(0, 1, 1, 0.1f);
-        #endregion
-
-        #region Length
-        protected float nodeSize = 0.05f;
-        protected float arrowLength = 0.75f;
-        protected float areaRadius = 0.5f;
-        #endregion
+        protected readonly Color blue = new Color(0, 1, 1, 1);
+        protected readonly Color transparentBlue = new Color(0, 1, 1, 0.1f);
+        
+        protected const float nodeSize = 0.05f;
+        protected const float arrowLength = 0.75f;
+        protected const float areaRadius = 0.5f;
         #endregion
 
         #region Protected Method
