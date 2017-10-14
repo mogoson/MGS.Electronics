@@ -1,22 +1,15 @@
 ﻿/*************************************************************************
  *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
- *  FileName: HelpUI.cs
- *  Author: Mogoson   Version: 0.1.0   Date: 3/31/2016
- *  Version Description:
- *    Internal develop version,mainly to achieve its function.
- *  File Description:
- *    Ignore.
- *  Class List:
- *    <ID>           <name>             <description>
- *     1.            HelpUI                Ignore.
- *  Function List:
- *    <class ID>     <name>             <description>
- *     1.
- *  History:
- *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     3/31/2016       0.1.0        Create this file.
+ *------------------------------------------------------------------------
+ *  File         :  HelpUI.cs
+ *  Description  :  Draw help message in scene.
+ *------------------------------------------------------------------------
+ *  Author       :  Mogoson
+ *  Version      :  0.1.0
+ *  Date         :  3/31/2016
+ *  Description  :  Initial development version.
  *************************************************************************/
-
+ 
 using UnityEngine;
 
 namespace Developer.Handle

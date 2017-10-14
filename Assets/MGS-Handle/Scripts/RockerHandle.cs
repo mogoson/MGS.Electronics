@@ -1,20 +1,13 @@
 ﻿/*************************************************************************
  *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
- *  FileName: RockerHandle.cs
- *  Author: Mogoson   Version: 0.1.0   Date: 4/1/2016
- *  Version Description:
- *    Internal develop version,mainly to achieve its function.
- *  File Description:
- *    Ignore.
- *  Class List:
- *    <ID>           <name>             <description>
- *     1.         RockerHandle             Ignore.
- *  Function List:
- *    <class ID>     <name>             <description>
- *     1.
- *  History:
- *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     4/1/2016       0.1.0        Create this file.
+ *------------------------------------------------------------------------
+ *  File         :  RockerHandle.cs
+ *  Description  :  Define rocker handle.
+ *------------------------------------------------------------------------
+ *  Author       :  Mogoson
+ *  Version      :  0.1.0
+ *  Date         :  4/1/2016
+ *  Description  :  Initial development version.
  *************************************************************************/
 
 using UnityEngine;
