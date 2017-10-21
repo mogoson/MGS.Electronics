@@ -87,17 +87,17 @@ namespace Developer.Handle
         /// <summary>
         /// Button switch up event.
         /// </summary>
-        public HandleEvent switchUpEvent;
+        public HandleEvent OnSwitchUp;
 
         /// <summary>
         /// Button switch down event.
         /// </summary>
-        public HandleEvent switchDownEvent;
+        public HandleEvent OnSwitchDown;
 
         /// <summary>
         /// Button switch lock event.
         /// </summary>
-        public HandleEvent switchLockEvent;
+        public HandleEvent OnSwitchLock;
 
         /// <summary>
         /// Default material of lightRender.
@@ -114,6 +114,7 @@ namespace Developer.Handle
         protected virtual void Awake()
         {
             startPosition = transform.localPosition;
+
             if (lightRender)
                 defaultMat = lightRender.material;
         }
@@ -125,13 +126,16 @@ namespace Developer.Handle
         {
             if (!isEnable)
                 return;
+
             isDown = true;
             currentOffset = downOffset;
             TranslateButton(currentOffset);
+
             if (highLight)
                 lightRender.material = lightMaterial;
-            if (switchDownEvent != null)
-                switchDownEvent();
+
+            if (OnSwitchDown != null)
+                OnSwitchDown();
         }
 
         /// <summary>
@@ -141,22 +145,27 @@ namespace Developer.Handle
         {
             if (!isEnable)
                 return;
+
             if (selfLock)
                 isLock = !isLock;
+
             if (isLock)
             {
                 currentOffset = downOffset * lockPercent;
-                if (switchLockEvent != null)
-                    switchLockEvent();
+
+                if (OnSwitchLock != null)
+                    OnSwitchLock();
             }
             else
             {
                 isDown = false;
                 currentOffset = 0;
-                if (switchUpEvent != null)
-                    switchUpEvent();
+
+                if (OnSwitchUp != null)
+                    OnSwitchUp();
             }
             TranslateButton(currentOffset);
+
             if (highLight && !isLock)
                 lightRender.material = defaultMat;
         }

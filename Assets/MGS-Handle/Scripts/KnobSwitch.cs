@@ -89,17 +89,17 @@ namespace Developer.Handle
         /// <summary>
         /// Knob switch drag event.
         /// </summary>
-        public HandleEvent switchDragEvent;
+        public HandleEvent OnSwitchDrag;
 
         /// <summary>
         /// Knob switch release event.
         /// </summary>
-        public HandleEvent switchReleaseEvent;
+        public HandleEvent OnSwitchRelease;
 
         /// <summary>
         /// Knob switch adsorbent event.
         /// </summary>
-        public HandleEvent switchAdsorbentEvent;
+        public HandleEvent OnSwitchAdsorbent;
         #endregion
 
         #region Protected Method
@@ -115,12 +115,15 @@ namespace Developer.Handle
         {
             if (!isEnable)
                 return;
+
             angle += GetMouseInput() * rotateSpeed * Time.deltaTime;
+
             if (rangeLimit)
                 angle = Mathf.Clamp(angle, minAngle, maxAngle);
             RotateKnob(angle);
-            if (switchDragEvent != null)
-                switchDragEvent();
+
+            if (OnSwitchDrag != null)
+                OnSwitchDrag();
         }
 
         /// <summary>
@@ -130,10 +133,13 @@ namespace Developer.Handle
         {
             if (!isEnable)
                 return;
-            if (switchReleaseEvent != null)
-                switchReleaseEvent();
+
+            if (OnSwitchRelease != null)
+                OnSwitchRelease();
+
             if (!adsorbent || adsorbentAngles.Length == 0)
                 return;
+
             var nearAngle = 0f;
             var tempNear = float.PositiveInfinity;
             foreach (var adsorbentAngle in adsorbentAngles)
@@ -147,8 +153,9 @@ namespace Developer.Handle
             }
             angle = nearAngle;
             RotateKnob(angle);
-            if (switchAdsorbentEvent != null)
-                switchAdsorbentEvent();
+
+            if (OnSwitchAdsorbent != null)
+                OnSwitchAdsorbent();
         }
 
         /// <summary>

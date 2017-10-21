@@ -9,7 +9,7 @@
  *  Date         :  3/31/2016
  *  Description  :  Initial development version.
  *************************************************************************/
- 
+
 using UnityEngine;
 
 namespace Developer.Handle
@@ -19,7 +19,8 @@ namespace Developer.Handle
     {
         #region Property and Field
         [Multiline]
-        public string text;
+        public string text = "Help info.";
+
         public float xOfset = 10;
         public float yOfset = 10;
         #endregion

@@ -57,17 +57,17 @@ namespace Developer.Handle
         /// <summary>
         /// Handle drag event.
         /// </summary>
-        public HandleEvent handleDragEvent;
+        public HandleEvent OnHandleDrag;
 
         /// <summary>
         /// Handle Release event.
         /// </summary>
-        public HandleEvent handleReleaseEvent;
+        public HandleEvent OnHandleRelease;
 
         /// <summary>
         /// Handle revert event.
         /// </summary>
-        public HandleEvent handleRevertEvent;
+        public HandleEvent OnHandleRevert;
         #endregion
 
         #region Protected Method
@@ -83,14 +83,16 @@ namespace Developer.Handle
         {
             if (!isEnable)
                 return;
+
             var x = Input.GetAxis("Mouse Y");
             var y = Input.GetAxis("Mouse X");
             angles += new Vector3(x, -y) * rotateSpeed * Time.deltaTime;
             if (angles.magnitude > radiusAngle)
                 angles = angles.normalized * radiusAngle;
             RotateHandle(angles);
-            if (handleDragEvent != null)
-                handleDragEvent();
+
+            if (OnHandleDrag != null)
+                OnHandleDrag();
         }
 
         /// <summary>
@@ -100,10 +102,12 @@ namespace Developer.Handle
         {
             if (!isEnable)
                 return;
+
             if (revertSpeed > 0)
                 InvokeRepeating("RevertHandle", 0, Time.fixedDeltaTime);
-            if (handleReleaseEvent != null)
-                handleReleaseEvent();
+
+            if (OnHandleRelease != null)
+                OnHandleRelease();
         }
 
         /// <summary>
@@ -114,9 +118,10 @@ namespace Developer.Handle
             if (angles.magnitude == 0)
             {
                 CancelInvoke("RevertHandle");
-                if (handleRevertEvent != null)
-                    handleRevertEvent();
-            }//if()_end
+
+                if (OnHandleRevert != null)
+                    OnHandleRevert();
+            }
             angles = Vector3.MoveTowards(angles, Vector3.zero, revertSpeed * Time.deltaTime);
             RotateHandle(angles);
         }
