@@ -1,4 +1,4 @@
-# MGS-Handle
+﻿# MGS-Handle
 - [English Manual](./README.md)
 
 ## 概述
@@ -25,15 +25,15 @@
 ## 图示
 - ButtonSwitch
 
-![ButtonSwitch](./Attachments/ButtonSwitch.png)
+![ButtonSwitch](./Attachments/ButtonSwitch.gif)
 
 - KnobSwitch
 
-![KnobSwitch](./Attachments/KnobSwitch.png)
+![KnobSwitch](./Attachments/KnobSwitch.gif)
 
 - RockerHandle
 
-![RockerHandle](./Attachments/RockerHandle.png)﻿
+![RockerHandle](./Attachments/RockerHandle.gif)﻿
 
 ## 联系
 - 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。

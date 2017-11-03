@@ -1,4 +1,4 @@
-# MGS-Handle
+﻿# MGS-Handle
 - [中文手册](./README_ZH.md)
 
 ## Summary
@@ -25,15 +25,15 @@
 ## Preview
 - ButtonSwitch
 
-![ButtonSwitch](./Attachments/ButtonSwitch.png)
+![ButtonSwitch](./Attachments/ButtonSwitch.gif)
 
 - KnobSwitch
 
-![KnobSwitch](./Attachments/KnobSwitch.png)
+![KnobSwitch](./Attachments/KnobSwitch.gif)
 
 - RockerHandle
 
-![RockerHandle](./Attachments/RockerHandle.png)﻿
+![RockerHandle](./Attachments/RockerHandle.gif)﻿
 
 ## Contact
-- If you have any questions, fell free to contact me at mogoson@qq.com.
+- If you have any questions, feel free to contact me at mogoson@qq.com.
