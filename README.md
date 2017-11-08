@@ -25,15 +25,15 @@
 ## Preview
 - ButtonSwitch
 
-![ButtonSwitch](./Attachments/ButtonSwitch.gif)
+![ButtonSwitch](./Attachments/README_Image/ButtonSwitch.gif)
 
 - KnobSwitch
 
-![KnobSwitch](./Attachments/KnobSwitch.gif)
+![KnobSwitch](./Attachments/README_Image/KnobSwitch.gif)
 
 - RockerHandle
 
-![RockerHandle](./Attachments/RockerHandle.gif)﻿
+![RockerHandle](./Attachments/README_Image/RockerHandle.gif)﻿
 
 ## Contact
 - If you have any questions, feel free to contact me at mogoson@qq.com.

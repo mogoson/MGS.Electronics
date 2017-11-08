@@ -22,18 +22,18 @@
 - “MGS-Handle/Prefabs”目录下存有上述开关和手柄预制，供读者参考。
 - “MGS-Handle/Scenes”目录下存有上述功能的演示案例，供读者参考。
 
-## 图示
+## 预览
 - ButtonSwitch
 
-![ButtonSwitch](./Attachments/ButtonSwitch.gif)
+![ButtonSwitch](./Attachments/README_Image/ButtonSwitch.gif)
 
 - KnobSwitch
 
-![KnobSwitch](./Attachments/KnobSwitch.gif)
+![KnobSwitch](./Attachments/README_Image/KnobSwitch.gif)
 
 - RockerHandle
 
-![RockerHandle](./Attachments/RockerHandle.gif)﻿
+![RockerHandle](./Attachments/README_Image/RockerHandle.gif)﻿
 
 ## 联系
 - 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。
