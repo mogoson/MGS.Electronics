@@ -21,6 +21,7 @@ namespace Developer.Handle
     {
         #region Property and Field
         protected KnobSwitch script { get { return target as KnobSwitch; } }
+
         protected Vector3 zeroAxis
         {
             get
@@ -47,6 +48,7 @@ namespace Developer.Handle
             DrawArrow(script.transform.position, script.transform.forward, arrowLength, nodeSize, "Axis", blue);
             DrawArrow(script.transform.position, zeroAxis, arrowLength, nodeSize, "Zero", blue);
             DrawArrow(script.transform.position, script.transform.up, areaRadius, nodeSize, string.Empty, blue);
+
             Handles.color = transparentBlue;
             if (script.rangeLimit)
             {
@@ -55,6 +57,7 @@ namespace Developer.Handle
             }
             else
                 Handles.DrawSolidDisc(script.transform.position, script.transform.forward, areaRadius);
+
             if (script.adsorbent)
             {
                 Handles.color = blue;

@@ -21,6 +21,7 @@ namespace Developer.Handle
     {
         #region Property and Field
         protected RockerHandle script { get { return target as RockerHandle; } }
+
         protected Vector3 zeroAxis
         {
             get
@@ -36,17 +37,20 @@ namespace Developer.Handle
                     return -script.transform.forward;
             }
         }
+
         protected Vector3 crossAxis { get { return Vector3.Cross(zeroAxis, new Vector3(zeroAxis.z, zeroAxis.y, zeroAxis.x)); } }
         #endregion
 
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
-            var fromAxis = Quaternion.AngleAxis(script.radiusAngle, crossAxis) * zeroAxis;
             Handles.color = blue;
             DrawSphereCap(script.transform.position, Quaternion.identity, nodeSize);
-            Handles.DrawWireArc(script.transform.position, zeroAxis, fromAxis, 360, areaRadius);
             DrawArrow(script.transform.position, -script.transform.forward, arrowLength, nodeSize, string.Empty, blue);
+
+            var fromAxis = Quaternion.AngleAxis(script.radiusAngle, crossAxis) * zeroAxis;
+            Handles.DrawWireArc(script.transform.position, zeroAxis, fromAxis, 360, areaRadius);
+
             Handles.color = transparentBlue;
             Handles.DrawSolidArc(script.transform.position, zeroAxis, fromAxis, 360, areaRadius);
         }

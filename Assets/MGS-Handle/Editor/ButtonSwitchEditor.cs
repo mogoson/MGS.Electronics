@@ -21,6 +21,7 @@ namespace Developer.Handle
     {
         #region Property and Field
         protected ButtonSwitch script { get { return target as ButtonSwitch; } }
+
         protected Vector3 zeroPoint
         {
             get
@@ -43,10 +44,11 @@ namespace Developer.Handle
         {
             Handles.color = blue;
             DrawSphereCap(zeroPoint, Quaternion.identity, nodeSize);
-            if (script.selfLock)
-                DrawSphereCap(zeroPoint + script.transform.forward * (script.downOffset * script.lockPercent), Quaternion.identity, nodeSize);
             DrawSphereCap(script.transform.position, Quaternion.identity, nodeSize);
             DrawArrow(zeroPoint, script.transform.forward, script.downOffset, nodeSize, string.Empty, blue);
+
+            if (script.selfLock)
+                DrawSphereCap(zeroPoint + script.transform.forward * (script.downOffset * script.lockPercent), Quaternion.identity, nodeSize);
         }
         #endregion
     }

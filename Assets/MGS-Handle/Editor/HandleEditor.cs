@@ -20,7 +20,7 @@ namespace Developer.Handle
         #region Property and Field
         protected readonly Color blue = new Color(0, 1, 1, 1);
         protected readonly Color transparentBlue = new Color(0, 1, 1, 0.1f);
-        
+
         protected const float nodeSize = 0.05f;
         protected const float arrowLength = 0.75f;
         protected const float areaRadius = 0.5f;
@@ -29,8 +29,8 @@ namespace Developer.Handle
         #region Protected Method
         protected virtual void DrawArrow(Vector3 start, Vector3 direction, float length, float size, string text, Color color)
         {
-            var gC = GUI.color;
-            var hC = Handles.color;
+            var gColor = GUI.color;
+            var hColor = Handles.color;
 
             GUI.color = color;
             Handles.color = color;
@@ -40,14 +40,15 @@ namespace Developer.Handle
             DrawSphereCap(end, Quaternion.identity, size);
             Handles.Label(end, text);
 
-            GUI.color = gC;
-            Handles.color = hC;
+            GUI.color = gColor;
+            Handles.color = hColor;
         }
 
         protected void DrawSphereCap(Vector3 position, Quaternion rotation, float size)
         {
 #if UNITY_5_5_OR_NEWER
-            Handles.SphereHandleCap(0, position, rotation, size, EventType.Ignore);
+            if (Event.current.type == EventType.Repaint)
+                Handles.SphereHandleCap(0, position, rotation, size, EventType.Repaint);
 #else
             Handles.SphereCap(0, position, rotation, size);
 #endif
@@ -56,7 +57,8 @@ namespace Developer.Handle
         protected void DrawCircleCap(Vector3 position, Quaternion rotation, float size)
         {
 #if UNITY_5_5_OR_NEWER
-            Handles.CircleHandleCap(0, position, rotation, size, EventType.Ignore);
+            if (Event.current.type == EventType.Repaint)
+                Handles.CircleHandleCap(0, position, rotation, size, EventType.Repaint);
 #else
             Handles.CircleCap(0, position, rotation, size);
 #endif
