@@ -14,8 +14,8 @@ using UnityEngine;
 
 namespace Developer.Handle
 {
-    [RequireComponent(typeof(Collider))]
     [AddComponentMenu("Developer/Handle/RockerHandle")]
+    [RequireComponent(typeof(Collider))]
     public class RockerHandle : MonoBehaviour
     {
         #region Property and Field
@@ -42,17 +42,17 @@ namespace Developer.Handle
         /// <summary>
         /// Handle out put normalized vector.
         /// </summary>
-        public Vector2 handleVector { get { return angles.normalized; } }
+        public Vector2 HandleVector { get { return Angles.normalized; } }
 
         /// <summary>
         /// Current angles.
         /// </summary>
-        public Vector3 angles { protected set; get; }
+        public Vector3 Angles { protected set; get; }
 
         /// <summary>
         /// Start angles.
         /// </summary>
-        public Vector3 startAngles { private set; get; }
+        public Vector3 StartAngles { private set; get; }
 
         /// <summary>
         /// Handle drag event.
@@ -73,7 +73,7 @@ namespace Developer.Handle
         #region Protected Method
         protected virtual void Awake()
         {
-            startAngles = transform.localEulerAngles;
+            StartAngles = transform.localEulerAngles;
         }
 
         /// <summary>
@@ -86,10 +86,10 @@ namespace Developer.Handle
 
             var x = Input.GetAxis("Mouse Y");
             var y = Input.GetAxis("Mouse X");
-            angles += new Vector3(x, -y) * rotateSpeed * Time.deltaTime;
-            if (angles.magnitude > radiusAngle)
-                angles = angles.normalized * radiusAngle;
-            RotateHandle(angles);
+            Angles += new Vector3(x, -y) * rotateSpeed * Time.deltaTime;
+            if (Angles.magnitude > radiusAngle)
+                Angles = Angles.normalized * radiusAngle;
+            RotateHandle(Angles);
 
             if (OnHandleDrag != null)
                 OnHandleDrag();
@@ -115,15 +115,15 @@ namespace Developer.Handle
         /// </summary>
         protected virtual void RevertHandle()
         {
-            if (angles.magnitude == 0)
+            if (Angles.magnitude == 0)
             {
                 CancelInvoke("RevertHandle");
 
                 if (OnHandleRevert != null)
                     OnHandleRevert();
             }
-            angles = Vector3.MoveTowards(angles, Vector3.zero, revertSpeed * Time.deltaTime);
-            RotateHandle(angles);
+            Angles = Vector3.MoveTowards(Angles, Vector3.zero, revertSpeed * Time.deltaTime);
+            RotateHandle(Angles);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Developer.Handle
         /// <param name="eulerAngles">Rotate euler angles.</param>
         protected virtual void RotateHandle(Vector3 eulerAngles)
         {
-            var euler = startAngles + eulerAngles;
+            var euler = StartAngles + eulerAngles;
             transform.localRotation = Quaternion.Euler(euler);
         }
         #endregion

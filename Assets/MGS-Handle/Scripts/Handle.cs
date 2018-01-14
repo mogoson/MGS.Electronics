@@ -17,7 +17,8 @@ namespace Developer.Handle
     /// </summary>
     public enum MouseAxis
     {
-        MouseX, MouseY
+        MouseX = 0,
+        MouseY = 1
     }
 
     /// <summary>

@@ -14,8 +14,8 @@ using UnityEngine;
 
 namespace Developer.Handle
 {
-    [RequireComponent(typeof(Collider))]
     [AddComponentMenu("Developer/Handle/ButtonSwitch")]
+    [RequireComponent(typeof(Collider))]
     public class ButtonSwitch : MonoBehaviour
     {
         #region Property and Field
@@ -58,22 +58,22 @@ namespace Developer.Handle
         /// <summary>
         /// Button switch is down state.
         /// </summary>
-        public bool isDown { protected set; get; }
+        public bool IsDown { protected set; get; }
 
         /// <summary>
         /// Current offset base start position.
         /// </summary>
-        public float currentOffset { protected set; get; }
+        public float CurrentOffset { protected set; get; }
 
         /// <summary>
         /// Start position.
         /// </summary>
-        public Vector3 startPosition { private set; get; }
+        public Vector3 StartPosition { private set; get; }
 
         /// <summary>
         /// Local move axis.
         /// </summary>
-        protected Vector3 moveAxis
+        protected Vector3 MoveAxis
         {
             get
             {
@@ -113,7 +113,7 @@ namespace Developer.Handle
         #region Protected Method
         protected virtual void Awake()
         {
-            startPosition = transform.localPosition;
+            StartPosition = transform.localPosition;
 
             if (lightRender)
                 defaultMat = lightRender.material;
@@ -127,9 +127,9 @@ namespace Developer.Handle
             if (!isEnable)
                 return;
 
-            isDown = true;
-            currentOffset = downOffset;
-            TranslateButton(currentOffset);
+            IsDown = true;
+            CurrentOffset = downOffset;
+            TranslateButton(CurrentOffset);
 
             if (highLight)
                 lightRender.material = lightMaterial;
@@ -151,20 +151,20 @@ namespace Developer.Handle
 
             if (isLock)
             {
-                currentOffset = downOffset * lockPercent;
+                CurrentOffset = downOffset * lockPercent;
 
                 if (OnSwitchLock != null)
                     OnSwitchLock();
             }
             else
             {
-                isDown = false;
-                currentOffset = 0;
+                IsDown = false;
+                CurrentOffset = 0;
 
                 if (OnSwitchUp != null)
                     OnSwitchUp();
             }
-            TranslateButton(currentOffset);
+            TranslateButton(CurrentOffset);
 
             if (highLight && !isLock)
                 lightRender.material = defaultMat;
@@ -176,7 +176,7 @@ namespace Developer.Handle
         /// <param name="offset">Offset of z axis.</param>
         protected virtual void TranslateButton(float offset)
         {
-            transform.localPosition = startPosition + moveAxis.normalized * offset;
+            transform.localPosition = StartPosition + MoveAxis.normalized * offset;
         }
         #endregion
     }

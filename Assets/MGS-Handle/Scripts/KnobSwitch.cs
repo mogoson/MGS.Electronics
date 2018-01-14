@@ -14,8 +14,8 @@ using UnityEngine;
 
 namespace Developer.Handle
 {
-    [RequireComponent(typeof(Collider))]
     [AddComponentMenu("Developer/Handle/KnobSwitch")]
+    [RequireComponent(typeof(Collider))]
     public class KnobSwitch : MonoBehaviour
     {
         #region Property and Field
@@ -62,24 +62,24 @@ namespace Developer.Handle
         /// <summary>
         /// Switch current angle.
         /// </summary>
-        public float angle { protected set; get; }
+        public float Angle { protected set; get; }
 
         /// <summary>
         /// Start angles.
         /// </summary>
-        public Vector3 startAngles { private set; get; }
+        public Vector3 StartAngles { private set; get; }
 
         /// <summary>
         /// Switch current rotate percent base range.
         /// </summary>
-        public float percent
+        public float Percent
         {
             get
             {
                 if (rangeLimit)
                 {
                     var range = maxAngle - minAngle;
-                    return (angle - minAngle) / (range == 0 ? 1 : range);
+                    return (Angle - minAngle) / (range == 0 ? 1 : range);
                 }
                 else
                     return 0;
@@ -105,7 +105,7 @@ namespace Developer.Handle
         #region Protected Method
         protected virtual void Awake()
         {
-            startAngles = transform.localEulerAngles;
+            StartAngles = transform.localEulerAngles;
         }
 
         /// <summary>
@@ -116,11 +116,10 @@ namespace Developer.Handle
             if (!isEnable)
                 return;
 
-            angle += GetMouseInput() * rotateSpeed * Time.deltaTime;
-
+            Angle += GetMouseInput() * rotateSpeed * Time.deltaTime;
             if (rangeLimit)
-                angle = Mathf.Clamp(angle, minAngle, maxAngle);
-            RotateKnob(angle);
+                Angle = Mathf.Clamp(Angle, minAngle, maxAngle);
+            RotateKnob(Angle);
 
             if (OnSwitchDrag != null)
                 OnSwitchDrag();
@@ -144,15 +143,15 @@ namespace Developer.Handle
             var tempNear = float.PositiveInfinity;
             foreach (var adsorbentAngle in adsorbentAngles)
             {
-                var deltaAngle = Mathf.Abs(angle - adsorbentAngle);
+                var deltaAngle = Mathf.Abs(Angle - adsorbentAngle);
                 if (deltaAngle < tempNear)
                 {
                     tempNear = deltaAngle;
                     nearAngle = adsorbentAngle;
                 }
             }
-            angle = nearAngle;
-            RotateKnob(angle);
+            Angle = nearAngle;
+            RotateKnob(Angle);
 
             if (OnSwitchAdsorbent != null)
                 OnSwitchAdsorbent();
@@ -164,7 +163,7 @@ namespace Developer.Handle
         /// <param name="rotateAngle">Rotate angle.</param>
         protected virtual void RotateKnob(float rotateAngle)
         {
-            var euler = startAngles + Vector3.back * rotateAngle;
+            var euler = StartAngles + Vector3.back * rotateAngle;
             transform.localRotation = Quaternion.Euler(euler);
         }
 

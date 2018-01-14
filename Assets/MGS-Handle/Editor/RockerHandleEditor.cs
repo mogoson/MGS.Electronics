@@ -20,39 +20,39 @@ namespace Developer.Handle
     public class RockerHandleEditor : HandleEditor
     {
         #region Property and Field
-        protected RockerHandle script { get { return target as RockerHandle; } }
+        protected RockerHandle Script { get { return target as RockerHandle; } }
 
-        protected Vector3 zeroAxis
+        protected Vector3 ZeroAxis
         {
             get
             {
                 if (Application.isPlaying)
                 {
-                    var back = Quaternion.Euler(script.startAngles) * Vector3.back;
-                    if (script.transform.parent)
-                        back = script.transform.parent.rotation * back;
+                    var back = Quaternion.Euler(Script.StartAngles) * Vector3.back;
+                    if (Script.transform.parent)
+                        back = Script.transform.parent.rotation * back;
                     return back;
                 }
                 else
-                    return -script.transform.forward;
+                    return -Script.transform.forward;
             }
         }
 
-        protected Vector3 crossAxis { get { return Vector3.Cross(zeroAxis, new Vector3(zeroAxis.z, zeroAxis.y, zeroAxis.x)); } }
+        protected Vector3 CrossAxis { get { return Vector3.Cross(ZeroAxis, new Vector3(ZeroAxis.z, ZeroAxis.y, ZeroAxis.x)); } }
         #endregion
 
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
             Handles.color = blue;
-            DrawSphereCap(script.transform.position, Quaternion.identity, nodeSize);
-            DrawArrow(script.transform.position, -script.transform.forward, arrowLength, nodeSize, string.Empty, blue);
+            DrawSphereCap(Script.transform.position, Quaternion.identity, nodeSize);
+            DrawArrow(Script.transform.position, -Script.transform.forward, arrowLength, nodeSize, string.Empty, blue);
 
-            var fromAxis = Quaternion.AngleAxis(script.radiusAngle, crossAxis) * zeroAxis;
-            Handles.DrawWireArc(script.transform.position, zeroAxis, fromAxis, 360, areaRadius);
+            var fromAxis = Quaternion.AngleAxis(Script.radiusAngle, CrossAxis) * ZeroAxis;
+            Handles.DrawWireArc(Script.transform.position, ZeroAxis, fromAxis, 360, areaRadius);
 
             Handles.color = transparentBlue;
-            Handles.DrawSolidArc(script.transform.position, zeroAxis, fromAxis, 360, areaRadius);
+            Handles.DrawSolidArc(Script.transform.position, ZeroAxis, fromAxis, 360, areaRadius);
         }
         #endregion
     }

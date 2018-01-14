@@ -20,21 +20,21 @@ namespace Developer.Handle
     public class ButtonSwitchEditor : HandleEditor
     {
         #region Property and Field
-        protected ButtonSwitch script { get { return target as ButtonSwitch; } }
+        protected ButtonSwitch Script { get { return target as ButtonSwitch; } }
 
-        protected Vector3 zeroPoint
+        protected Vector3 ZeroPoint
         {
             get
             {
                 if (Application.isPlaying)
                 {
-                    var point = script.startPosition;
-                    if (script.transform.parent)
-                        point = script.transform.parent.TransformPoint(point);
+                    var point = Script.StartPosition;
+                    if (Script.transform.parent)
+                        point = Script.transform.parent.TransformPoint(point);
                     return point;
                 }
                 else
-                    return script.transform.position;
+                    return Script.transform.position;
             }
         }
         #endregion
@@ -43,12 +43,12 @@ namespace Developer.Handle
         protected virtual void OnSceneGUI()
         {
             Handles.color = blue;
-            DrawSphereCap(zeroPoint, Quaternion.identity, nodeSize);
-            DrawSphereCap(script.transform.position, Quaternion.identity, nodeSize);
-            DrawArrow(zeroPoint, script.transform.forward, script.downOffset, nodeSize, string.Empty, blue);
+            DrawSphereCap(ZeroPoint, Quaternion.identity, nodeSize);
+            DrawSphereCap(Script.transform.position, Quaternion.identity, nodeSize);
+            DrawArrow(ZeroPoint, Script.transform.forward, Script.downOffset, nodeSize, string.Empty, blue);
 
-            if (script.selfLock)
-                DrawSphereCap(zeroPoint + script.transform.forward * (script.downOffset * script.lockPercent), Quaternion.identity, nodeSize);
+            if (Script.selfLock)
+                DrawSphereCap(ZeroPoint + Script.transform.forward * (Script.downOffset * Script.lockPercent), Quaternion.identity, nodeSize);
         }
         #endregion
     }
