@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+ *  Copyright (C), 2016-2018, Mogoson Tech. Co., Ltd.
  *------------------------------------------------------------------------
  *  File         :  ButtonSwitch.cs
  *  Description  :  Define button switch.
@@ -8,6 +8,11 @@
  *  Version      :  0.1.0
  *  Date         :  3/31/2016
  *  Description  :  Initial development version.
+ *  
+ *  Author       :  Mogoson
+ *  Version      :  0.1.1
+ *  Date         :  1/16/2018
+ *  Description  :  Use HandleLED to control the LED of button switch.
  *************************************************************************/
 
 using UnityEngine;
@@ -41,19 +46,14 @@ namespace Developer.Handle
         public float lockPercent = 0.5f;
 
         /// <summary>
-        /// High light on switch down.
+        /// Toggle LED on toggle button.
         /// </summary>
-        public bool highLight = false;
+        public bool useLED = false;
 
         /// <summary>
-        /// High light target renderer.
+        /// LED of button switch.
         /// </summary>
-        public Renderer lightRender;
-
-        /// <summary>
-        /// High light material.
-        /// </summary>
-        public Material lightMaterial;
+        public HandleLED LED;
 
         /// <summary>
         /// Button switch is down state.
@@ -100,11 +100,6 @@ namespace Developer.Handle
         public HandleEvent OnSwitchLock;
 
         /// <summary>
-        /// Default material of lightRender.
-        /// </summary>
-        protected Material defaultMat;
-
-        /// <summary>
         /// Current self lock state.
         /// </summary>
         protected bool isLock;
@@ -114,9 +109,6 @@ namespace Developer.Handle
         protected virtual void Awake()
         {
             StartPosition = transform.localPosition;
-
-            if (lightRender)
-                defaultMat = lightRender.material;
         }
 
         /// <summary>
@@ -131,8 +123,8 @@ namespace Developer.Handle
             CurrentOffset = downOffset;
             TranslateButton(CurrentOffset);
 
-            if (highLight)
-                lightRender.material = lightMaterial;
+            if (useLED)
+                LED.Open();
 
             if (OnSwitchDown != null)
                 OnSwitchDown();
@@ -166,8 +158,8 @@ namespace Developer.Handle
             }
             TranslateButton(CurrentOffset);
 
-            if (highLight && !isLock)
-                lightRender.material = defaultMat;
+            if (useLED && !isLock)
+                LED.Close();
         }
 
         /// <summary>
