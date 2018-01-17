@@ -17,6 +17,7 @@
 - ButtonSwitch：按钮开关，自锁按钮开关。
 - KnobSwitch：旋钮开关。
 - RockerHandle：摇杆手柄。
+- SimpleLED：简单LED灯。
 
 ## 案例
 - “MGS-Handle/Prefabs”目录下存有上述开关和手柄预制，供读者参考。

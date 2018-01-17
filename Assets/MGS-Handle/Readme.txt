@@ -1,7 +1,7 @@
 ==========================================================================
-  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+  Copyright (C), 2016-2018, Mogoson Tech. Co., Ltd.
   Name: MGS-Handle
-  Author: Mogoson   Version: 0.1.0   Date: 4/1/2016
+  Author: Mogoson   Version: 0.1.1   Date: 1/17/2018
 ==========================================================================
   [Summary]
     Unity plugin for make button switch, knob switch and rocker handle
@@ -15,6 +15,7 @@
     ButtonSwitch : Button switch, self lock switch.
     KnobSwitch : Knob switch.
     RockerHandle : Rocker handle.
+    SimpleLED : Simple LED light.
 --------------------------------------------------------------------------
   [Usage]
     Reference the prefabs and demos to use the components in your project.

@@ -17,6 +17,7 @@
 - ButtonSwitch : Button switch, self lock switch.
 - KnobSwitch : Knob switch.
 - RockerHandle : Rocker handle.
+- SimpleLED : Simple LED light.
 
 ## Demo
 - Prefabs in the path "MGS-Handle/Prefabs" provide reference to you.
