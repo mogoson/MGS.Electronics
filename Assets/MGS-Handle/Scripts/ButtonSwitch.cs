@@ -168,7 +168,7 @@ namespace Developer.Handle
         /// <param name="offset">Offset of z axis.</param>
         protected virtual void TranslateButton(float offset)
         {
-            transform.localPosition = StartPosition + MoveAxis.normalized * offset;
+            transform.localPosition = StartPosition + MoveAxis * offset;
         }
         #endregion
     }
