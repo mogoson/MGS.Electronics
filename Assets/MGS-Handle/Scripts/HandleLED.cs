@@ -1,38 +1,19 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2018, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  Handle.cs
- *  Description  :  Define MouseAxis, HandleEvent and HandleLight.
+ *  File         :  HandleLED.cs
+ *  Description  :  Define LED of handle.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  3/31/2016
+ *  Date         :  3/9/2018
  *  Description  :  Initial development version.
- *
- *  Author       :  Mogoson
- *  Version      :  0.1.1
- *  Date         :  1/16/2018
- *  Description  :  Add Class HandleLED to define LED of handle.
  *************************************************************************/
 
 using UnityEngine;
 
 namespace Developer.Handle
 {
-    /// <summary>
-    /// Mouse Axis.
-    /// </summary>
-    public enum MouseAxis
-    {
-        MouseX = 0,
-        MouseY = 1
-    }
-
-    /// <summary>
-    /// Handle Event.
-    /// </summary>
-    public delegate void HandleEvent();
-
     /// <summary>
     /// LED of handle.
     /// </summary>

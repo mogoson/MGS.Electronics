@@ -1,15 +1,16 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  RockerHandle.cs
  *  Description  :  Define rocker handle.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  4/1/2016
+ *  Date         :  3/9/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System;
 using UnityEngine;
 
 namespace Developer.Handle
@@ -18,7 +19,7 @@ namespace Developer.Handle
     [RequireComponent(typeof(Collider))]
     public class RockerHandle : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property 
         /// <summary>
         /// Enable control.
         /// </summary>
@@ -40,34 +41,34 @@ namespace Developer.Handle
         public float revertSpeed = 0;
 
         /// <summary>
+        /// Start angles.
+        /// </summary>
+        public Vector3 StartAngles { protected set; get; }
+
+        /// <summary>
         /// Handle out put normalized vector.
         /// </summary>
-        public Vector2 HandleVector { get { return Angles.normalized; } }
+        public Vector2 Vector { get { return angles.normalized; } }
 
         /// <summary>
         /// Current angles.
         /// </summary>
-        public Vector3 Angles { protected set; get; }
-
-        /// <summary>
-        /// Start angles.
-        /// </summary>
-        public Vector3 StartAngles { private set; get; }
+        protected Vector3 angles;
 
         /// <summary>
         /// Handle drag event.
         /// </summary>
-        public HandleEvent OnHandleDrag;
+        public event Action OnHandleDrag;
 
         /// <summary>
         /// Handle Release event.
         /// </summary>
-        public HandleEvent OnHandleRelease;
+        public event Action OnHandleRelease;
 
         /// <summary>
         /// Handle revert event.
         /// </summary>
-        public HandleEvent OnHandleRevert;
+        public event Action OnHandleRevert;
         #endregion
 
         #region Protected Method
@@ -86,13 +87,13 @@ namespace Developer.Handle
 
             var x = Input.GetAxis("Mouse Y");
             var y = Input.GetAxis("Mouse X");
-            Angles += new Vector3(x, -y) * rotateSpeed * Time.deltaTime;
-            if (Angles.magnitude > radiusAngle)
-                Angles = Angles.normalized * radiusAngle;
-            RotateHandle(Angles);
+            angles += new Vector3(x, -y) * rotateSpeed * Time.deltaTime;
+            if (angles.magnitude > radiusAngle)
+                angles = angles.normalized * radiusAngle;
+            RotateHandle(angles);
 
             if (OnHandleDrag != null)
-                OnHandleDrag();
+                OnHandleDrag.Invoke();
         }
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace Developer.Handle
                 InvokeRepeating("RevertHandle", 0, Time.fixedDeltaTime);
 
             if (OnHandleRelease != null)
-                OnHandleRelease();
+                OnHandleRelease.Invoke();
         }
 
         /// <summary>
@@ -115,15 +116,15 @@ namespace Developer.Handle
         /// </summary>
         protected virtual void RevertHandle()
         {
-            if (Angles.magnitude == 0)
+            if (angles.magnitude == 0)
             {
                 CancelInvoke("RevertHandle");
 
                 if (OnHandleRevert != null)
-                    OnHandleRevert();
+                    OnHandleRevert.Invoke();
             }
-            Angles = Vector3.MoveTowards(Angles, Vector3.zero, revertSpeed * Time.deltaTime);
-            RotateHandle(Angles);
+            angles = Vector3.MoveTowards(angles, Vector3.zero, revertSpeed * Time.deltaTime);
+            RotateHandle(angles);
         }
 
         /// <summary>
@@ -132,8 +133,7 @@ namespace Developer.Handle
         /// <param name="eulerAngles">Rotate euler angles.</param>
         protected virtual void RotateHandle(Vector3 eulerAngles)
         {
-            var euler = StartAngles + eulerAngles;
-            transform.localRotation = Quaternion.Euler(euler);
+            transform.localRotation = Quaternion.Euler(StartAngles + eulerAngles);
         }
         #endregion
     }

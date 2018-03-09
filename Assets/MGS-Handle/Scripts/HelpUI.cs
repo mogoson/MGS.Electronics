@@ -1,12 +1,12 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  HelpUI.cs
- *  Description  :  Draw help message in scene.
+ *  Description  :  Draw help info in scene.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  3/31/2016
+ *  Date         :  3/9/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -17,9 +17,9 @@ namespace Developer.Handle
     [AddComponentMenu("Developer/Handle/HelpUI")]
     public class HelpUI : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         [Multiline]
-        public string text = "Help info.";
+        public string info = "Help info.";
 
         public float xOfset = 10;
         public float yOfset = 10;
@@ -31,7 +31,7 @@ namespace Developer.Handle
             GUILayout.Space(yOfset);
             GUILayout.BeginHorizontal();
             GUILayout.Space(xOfset);
-            GUILayout.Label(text);
+            GUILayout.Label(info);
             GUILayout.EndHorizontal();
         }
         #endregion

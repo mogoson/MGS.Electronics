@@ -1,15 +1,16 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  RockerHandleEditor.cs
  *  Description  :  Editor for RockerHandle.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  4/1/2016
+ *  Date         :  3/9/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using Developer.EditorExtension;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,10 +18,10 @@ namespace Developer.Handle
 {
     [CustomEditor(typeof(RockerHandle), true)]
     [CanEditMultipleObjects]
-    public class RockerHandleEditor : HandleEditor
+    public class RockerHandleEditor : GenericEditor
     {
-        #region Property and Field
-        protected RockerHandle Script { get { return target as RockerHandle; } }
+        #region Field and Property 
+        protected RockerHandle Target { get { return target as RockerHandle; } }
 
         protected Vector3 ZeroAxis
         {
@@ -28,13 +29,13 @@ namespace Developer.Handle
             {
                 if (Application.isPlaying)
                 {
-                    var back = Quaternion.Euler(Script.StartAngles) * Vector3.back;
-                    if (Script.transform.parent)
-                        back = Script.transform.parent.rotation * back;
+                    var back = Quaternion.Euler(Target.StartAngles) * Vector3.back;
+                    if (Target.transform.parent)
+                        back = Target.transform.parent.rotation * back;
                     return back;
                 }
                 else
-                    return -Script.transform.forward;
+                    return -Target.transform.forward;
             }
         }
 
@@ -44,15 +45,15 @@ namespace Developer.Handle
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
-            Handles.color = blue;
-            DrawSphereCap(Script.transform.position, Quaternion.identity, nodeSize);
-            DrawArrow(Script.transform.position, -Script.transform.forward, arrowLength, nodeSize, string.Empty, blue);
+            Handles.color = Blue;
+            DrawSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
+            DrawSphereArrow(Target.transform.position, -Target.transform.forward, ArrowLength, NodeSize, Blue, string.Empty);
 
-            var fromAxis = Quaternion.AngleAxis(Script.radiusAngle, CrossAxis) * ZeroAxis;
-            Handles.DrawWireArc(Script.transform.position, ZeroAxis, fromAxis, 360, areaRadius);
+            var fromAxis = Quaternion.AngleAxis(Target.radiusAngle, CrossAxis) * ZeroAxis;
+            Handles.DrawWireArc(Target.transform.position, ZeroAxis, fromAxis, 360, AreaRadius);
 
-            Handles.color = transparentBlue;
-            Handles.DrawSolidArc(Script.transform.position, ZeroAxis, fromAxis, 360, areaRadius);
+            Handles.color = TransparentBlue;
+            Handles.DrawSolidArc(Target.transform.position, ZeroAxis, fromAxis, 360, AreaRadius);
         }
         #endregion
     }

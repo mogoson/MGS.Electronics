@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2018, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ButtonSwitch.cs
  *  Description  :  Define button switch.
@@ -11,10 +11,11 @@
  *  
  *  Author       :  Mogoson
  *  Version      :  0.1.1
- *  Date         :  1/16/2018
+ *  Date         :  3/9/2018
  *  Description  :  Use HandleLED to control the LED of button switch.
  *************************************************************************/
 
+using System;
 using UnityEngine;
 
 namespace Developer.Handle
@@ -23,7 +24,7 @@ namespace Developer.Handle
     [RequireComponent(typeof(Collider))]
     public class ButtonSwitch : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property 
         /// <summary>
         /// Is enable to control.
         /// </summary>
@@ -61,14 +62,9 @@ namespace Developer.Handle
         public bool IsDown { protected set; get; }
 
         /// <summary>
-        /// Current offset base start position.
-        /// </summary>
-        public float CurrentOffset { protected set; get; }
-
-        /// <summary>
         /// Start position.
         /// </summary>
-        public Vector3 StartPosition { private set; get; }
+        public Vector3 StartPosition { protected set; get; }
 
         /// <summary>
         /// Local move axis.
@@ -85,24 +81,29 @@ namespace Developer.Handle
         }
 
         /// <summary>
-        /// Button switch up event.
+        /// Current offset base start position.
         /// </summary>
-        public HandleEvent OnSwitchUp;
-
-        /// <summary>
-        /// Button switch down event.
-        /// </summary>
-        public HandleEvent OnSwitchDown;
-
-        /// <summary>
-        /// Button switch lock event.
-        /// </summary>
-        public HandleEvent OnSwitchLock;
+        protected float currentOffset;
 
         /// <summary>
         /// Current self lock state.
         /// </summary>
         protected bool isLock;
+
+        /// <summary>
+        /// Button switch up event.
+        /// </summary>
+        public event Action OnSwitchUp;
+
+        /// <summary>
+        /// Button switch down event.
+        /// </summary>
+        public event Action OnSwitchDown;
+
+        /// <summary>
+        /// Button switch lock event.
+        /// </summary>
+        public event Action OnSwitchLock;
         #endregion
 
         #region Protected Method
@@ -120,14 +121,14 @@ namespace Developer.Handle
                 return;
 
             IsDown = true;
-            CurrentOffset = downOffset;
-            TranslateButton(CurrentOffset);
+            currentOffset = downOffset;
+            TranslateButton(currentOffset);
 
             if (useLED)
                 LED.Open();
 
             if (OnSwitchDown != null)
-                OnSwitchDown();
+                OnSwitchDown.Invoke();
         }
 
         /// <summary>
@@ -143,20 +144,20 @@ namespace Developer.Handle
 
             if (isLock)
             {
-                CurrentOffset = downOffset * lockPercent;
+                currentOffset = downOffset * lockPercent;
 
                 if (OnSwitchLock != null)
-                    OnSwitchLock();
+                    OnSwitchLock.Invoke();
             }
             else
             {
                 IsDown = false;
-                CurrentOffset = 0;
+                currentOffset = 0;
 
                 if (OnSwitchUp != null)
-                    OnSwitchUp();
+                    OnSwitchUp.Invoke();
             }
-            TranslateButton(CurrentOffset);
+            TranslateButton(currentOffset);
 
             if (useLED && !isLock)
                 LED.Close();

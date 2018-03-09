@@ -1,24 +1,34 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  KnobSwitch.cs
  *  Description  :  Define knob switch.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  3/31/2016
+ *  Date         :  3/9/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System;
 using UnityEngine;
 
 namespace Developer.Handle
 {
+    /// <summary>
+    /// Mouse Axis.
+    /// </summary>
+    public enum MouseAxis
+    {
+        MouseX = 0,
+        MouseY = 1
+    }
+
     [AddComponentMenu("Developer/Handle/KnobSwitch")]
     [RequireComponent(typeof(Collider))]
     public class KnobSwitch : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property 
         /// <summary>
         /// Enable control.
         /// </summary>
@@ -67,7 +77,7 @@ namespace Developer.Handle
         /// <summary>
         /// Start angles.
         /// </summary>
-        public Vector3 StartAngles { private set; get; }
+        public Vector3 StartAngles { protected set; get; }
 
         /// <summary>
         /// Switch current rotate percent base range.
@@ -89,17 +99,17 @@ namespace Developer.Handle
         /// <summary>
         /// Knob switch drag event.
         /// </summary>
-        public HandleEvent OnSwitchDrag;
+        public event Action OnSwitchDrag;
 
         /// <summary>
         /// Knob switch release event.
         /// </summary>
-        public HandleEvent OnSwitchRelease;
+        public event Action OnSwitchRelease;
 
         /// <summary>
         /// Knob switch adsorbent event.
         /// </summary>
-        public HandleEvent OnSwitchAdsorbent;
+        public event Action OnSwitchAdsorbent;
         #endregion
 
         #region Protected Method
@@ -122,7 +132,7 @@ namespace Developer.Handle
             RotateKnob(Angle);
 
             if (OnSwitchDrag != null)
-                OnSwitchDrag();
+                OnSwitchDrag.Invoke();
         }
 
         /// <summary>
@@ -134,7 +144,7 @@ namespace Developer.Handle
                 return;
 
             if (OnSwitchRelease != null)
-                OnSwitchRelease();
+                OnSwitchRelease.Invoke();
 
             if (!adsorbent || adsorbentAngles.Length == 0)
                 return;
@@ -154,7 +164,7 @@ namespace Developer.Handle
             RotateKnob(Angle);
 
             if (OnSwitchAdsorbent != null)
-                OnSwitchAdsorbent();
+                OnSwitchAdsorbent.Invoke();
         }
 
         /// <summary>
@@ -163,8 +173,7 @@ namespace Developer.Handle
         /// <param name="rotateAngle">Rotate angle.</param>
         protected virtual void RotateKnob(float rotateAngle)
         {
-            var euler = StartAngles + Vector3.back * rotateAngle;
-            transform.localRotation = Quaternion.Euler(euler);
+            transform.localRotation = Quaternion.Euler(StartAngles + Vector3.back * rotateAngle);
         }
 
         /// <summary>

@@ -1,15 +1,16 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ButtonSwitchEditor.cs
  *  Description  :  Editor for ButtonSwitch.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  4/1/2016
+ *  Date         :  3/9/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using Developer.EditorExtension;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,10 +18,10 @@ namespace Developer.Handle
 {
     [CustomEditor(typeof(ButtonSwitch), true)]
     [CanEditMultipleObjects]
-    public class ButtonSwitchEditor : HandleEditor
+    public class ButtonSwitchEditor : GenericEditor
     {
-        #region Property and Field
-        protected ButtonSwitch Script { get { return target as ButtonSwitch; } }
+        #region Field and Property 
+        protected ButtonSwitch Target { get { return target as ButtonSwitch; } }
 
         protected Vector3 ZeroPoint
         {
@@ -28,13 +29,13 @@ namespace Developer.Handle
             {
                 if (Application.isPlaying)
                 {
-                    var point = Script.StartPosition;
-                    if (Script.transform.parent)
-                        point = Script.transform.parent.TransformPoint(point);
+                    var point = Target.StartPosition;
+                    if (Target.transform.parent)
+                        point = Target.transform.parent.TransformPoint(point);
                     return point;
                 }
                 else
-                    return Script.transform.position;
+                    return Target.transform.position;
             }
         }
         #endregion
@@ -42,13 +43,13 @@ namespace Developer.Handle
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
-            Handles.color = blue;
-            DrawSphereCap(ZeroPoint, Quaternion.identity, nodeSize);
-            DrawSphereCap(Script.transform.position, Quaternion.identity, nodeSize);
-            DrawArrow(ZeroPoint, Script.transform.forward, Script.downOffset, nodeSize, string.Empty, blue);
+            Handles.color = Blue;
+            DrawSphereCap(ZeroPoint, Quaternion.identity, NodeSize);
+            DrawSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
+            DrawSphereArrow(ZeroPoint, Target.transform.forward, Target.downOffset, NodeSize, Blue, string.Empty);
 
-            if (Script.selfLock)
-                DrawSphereCap(ZeroPoint + Script.transform.forward * (Script.downOffset * Script.lockPercent), Quaternion.identity, nodeSize);
+            if (Target.selfLock)
+                DrawSphereCap(ZeroPoint + Target.transform.forward * (Target.downOffset * Target.lockPercent), Quaternion.identity, NodeSize);
         }
         #endregion
     }

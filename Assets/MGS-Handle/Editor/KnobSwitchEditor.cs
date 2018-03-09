@@ -1,15 +1,16 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2016-2017, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  KnobSwitchEditor.cs
- *  Description  :  Editor for KnobSwitch.
+ *  DeTargetion  :  Editor for KnobSwitch.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  4/1/2016
- *  Description  :  Initial development version.
+ *  Date         :  3/9/2018
+ *  DeTargetion  :  Initial development version.
  *************************************************************************/
 
+using Developer.EditorExtension;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,10 +18,10 @@ namespace Developer.Handle
 {
     [CustomEditor(typeof(KnobSwitch), true)]
     [CanEditMultipleObjects]
-    public class KnobSwitchEditor : HandleEditor
+    public class KnobSwitchEditor : GenericEditor
     {
-        #region Property and Field
-        protected KnobSwitch Script { get { return target as KnobSwitch; } }
+        #region Field and Property 
+        protected KnobSwitch Target { get { return target as KnobSwitch; } }
 
         protected Vector3 ZeroAxis
         {
@@ -28,13 +29,13 @@ namespace Developer.Handle
             {
                 if (Application.isPlaying)
                 {
-                    var up = Quaternion.Euler(Script.StartAngles) * Vector3.up;
-                    if (Script.transform.parent)
-                        up = Script.transform.parent.rotation * up;
+                    var up = Quaternion.Euler(Target.StartAngles) * Vector3.up;
+                    if (Target.transform.parent)
+                        up = Target.transform.parent.rotation * up;
                     return up;
                 }
                 else
-                    return Script.transform.up;
+                    return Target.transform.up;
             }
         }
         #endregion
@@ -42,30 +43,30 @@ namespace Developer.Handle
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
-            Handles.color = blue;
-            DrawSphereCap(Script.transform.position, Quaternion.identity, nodeSize);
-            DrawCircleCap(Script.transform.position, Script.transform.rotation, areaRadius);
-            DrawArrow(Script.transform.position, Script.transform.forward, arrowLength, nodeSize, "Axis", blue);
-            DrawArrow(Script.transform.position, ZeroAxis, arrowLength, nodeSize, "Zero", blue);
-            DrawArrow(Script.transform.position, Script.transform.up, areaRadius, nodeSize, string.Empty, blue);
+            Handles.color = Blue;
+            DrawSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
+            DrawCircleCap(Target.transform.position, Target.transform.rotation, AreaRadius);
+            DrawSphereArrow(Target.transform.position, Target.transform.forward, ArrowLength, NodeSize, Blue, "Axis");
+            DrawSphereArrow(Target.transform.position, ZeroAxis, ArrowLength, NodeSize, Blue, "Zero");
+            DrawSphereArrow(Target.transform.position, Target.transform.up, AreaRadius, NodeSize, Blue, string.Empty);
 
-            Handles.color = transparentBlue;
-            if (Script.rangeLimit)
+            Handles.color = TransparentBlue;
+            if (Target.rangeLimit)
             {
-                var fromAxis = Quaternion.AngleAxis(Script.minAngle, Script.transform.forward) * ZeroAxis;
-                Handles.DrawSolidArc(Script.transform.position, Script.transform.forward, fromAxis, Script.maxAngle - Script.minAngle, areaRadius);
+                var fromAxis = Quaternion.AngleAxis(Target.minAngle, Target.transform.forward) * ZeroAxis;
+                Handles.DrawSolidArc(Target.transform.position, Target.transform.forward, fromAxis, Target.maxAngle - Target.minAngle, AreaRadius);
             }
             else
-                Handles.DrawSolidDisc(Script.transform.position, Script.transform.forward, areaRadius);
+                Handles.DrawSolidDisc(Target.transform.position, Target.transform.forward, AreaRadius);
 
-            if (Script.adsorbent)
+            if (Target.adsorbent)
             {
-                Handles.color = blue;
-                foreach (var adsorbent in Script.adsorbentAngles)
+                Handles.color = Blue;
+                foreach (var adsorbent in Target.adsorbentAngles)
                 {
-                    var adsorbentAxis = Quaternion.AngleAxis(adsorbent, Script.transform.forward) * ZeroAxis;
-                    var adsorbentPosition = Script.transform.position + adsorbentAxis.normalized * areaRadius;
-                    DrawSphereCap(adsorbentPosition, Quaternion.identity, nodeSize);
+                    var adsorbentAxis = Quaternion.AngleAxis(adsorbent, Target.transform.forward) * ZeroAxis;
+                    var adsorbentPosition = Target.transform.position + adsorbentAxis.normalized * AreaRadius;
+                    DrawSphereCap(adsorbentPosition, Quaternion.identity, NodeSize);
                 }
             }
         }

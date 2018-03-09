@@ -1,12 +1,12 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  SimpleLED.cs
  *  Description  :  Define simple LED.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  1/17/2018
+ *  Date         :  3/9/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -18,7 +18,7 @@ namespace Developer.Handle
     [RequireComponent(typeof(Renderer))]
     public class SimpleLED : HandleLED
     {
-        #region Property and Field
+        #region Field and Property 
         /// <summary>
         /// Highlight material of LED.
         /// </summary>
