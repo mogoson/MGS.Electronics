@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace Developer.Handle
+namespace Mogoson.Handle
 {
     /// <summary>
     /// LED of handle.

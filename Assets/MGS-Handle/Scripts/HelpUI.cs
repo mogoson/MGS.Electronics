@@ -12,9 +12,8 @@
 
 using UnityEngine;
 
-namespace Developer.Handle
+namespace Mogoson.Handle
 {
-    [AddComponentMenu("Developer/Handle/HelpUI")]
     public class HelpUI : MonoBehaviour
     {
         #region Field and Property

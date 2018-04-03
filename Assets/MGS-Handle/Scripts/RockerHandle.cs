@@ -13,9 +13,12 @@
 using System;
 using UnityEngine;
 
-namespace Developer.Handle
+namespace Mogoson.Handle
 {
-    [AddComponentMenu("Developer/Handle/RockerHandle")]
+    /// <summary>
+    /// Handle with rocker.
+    /// </summary>
+    [AddComponentMenu("Mogoson/Handle/RockerHandle")]
     [RequireComponent(typeof(Collider))]
     public class RockerHandle : MonoBehaviour
     {

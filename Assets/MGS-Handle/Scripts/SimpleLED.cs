@@ -12,9 +12,12 @@
 
 using UnityEngine;
 
-namespace Developer.Handle
+namespace Mogoson.Handle
 {
-    [AddComponentMenu("Developer/Handle/SimpleLED")]
+    /// <summary>
+    /// Simple LED for handle.
+    /// </summary>
+    [AddComponentMenu("Mogoson/Handle/SimpleLED")]
     [RequireComponent(typeof(Renderer))]
     public class SimpleLED : HandleLED
     {

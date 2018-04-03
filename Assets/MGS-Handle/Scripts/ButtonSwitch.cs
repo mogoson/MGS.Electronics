@@ -18,9 +18,12 @@
 using System;
 using UnityEngine;
 
-namespace Developer.Handle
+namespace Mogoson.Handle
 {
-    [AddComponentMenu("Developer/Handle/ButtonSwitch")]
+    /// <summary>
+    /// Switch with button.
+    /// </summary>
+    [AddComponentMenu("Mogoson/Handle/ButtonSwitch")]
     [RequireComponent(typeof(Collider))]
     public class ButtonSwitch : MonoBehaviour
     {

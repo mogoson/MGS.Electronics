@@ -13,7 +13,7 @@
 using System;
 using UnityEngine;
 
-namespace Developer.Handle
+namespace Mogoson.Handle
 {
     /// <summary>
     /// Mouse Axis.
@@ -24,7 +24,10 @@ namespace Developer.Handle
         MouseY = 1
     }
 
-    [AddComponentMenu("Developer/Handle/KnobSwitch")]
+    /// <summary>
+    /// Switch with knob.
+    /// </summary>
+    [AddComponentMenu("Mogoson/Handle/KnobSwitch")]
     [RequireComponent(typeof(Collider))]
     public class KnobSwitch : MonoBehaviour
     {
