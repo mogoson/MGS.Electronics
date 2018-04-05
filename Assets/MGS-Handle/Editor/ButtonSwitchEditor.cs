@@ -49,7 +49,7 @@ namespace Mogoson.Handle
             DrawSphereArrow(ZeroPoint, Target.transform.forward, Target.downOffset, NodeSize, Blue, string.Empty);
 
             if (Target.selfLock)
-                DrawSphereCap(ZeroPoint + Target.transform.forward * (Target.downOffset * Target.lockPercent), Quaternion.identity, NodeSize);
+                DrawSphereCap(ZeroPoint + Target.transform.forward * Target.downOffset * Target.lockPercent, Quaternion.identity, NodeSize);
         }
         #endregion
     }
