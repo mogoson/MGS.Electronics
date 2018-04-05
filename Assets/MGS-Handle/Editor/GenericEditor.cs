@@ -17,7 +17,7 @@ using UnityEngine;
 using UnityEditor.SceneManagement;
 #endif
 
-namespace Mogoson.EditorExtension
+namespace Mogoson.UEditor
 {
     public class GenericEditor : Editor
     {
