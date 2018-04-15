@@ -1,35 +1,35 @@
 ﻿/*************************************************************************
  *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  HelpUI.cs
+ *  File         :  HelpInfo.cs
  *  Description  :  Draw help info in scene.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  3/9/2018
+ *  Date         :  4/15/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
 using UnityEngine;
 
-namespace Mogoson.Handle
+namespace Mogoson.UI
 {
-    public class HelpUI : MonoBehaviour
+    public class HelpInfo : MonoBehaviour
     {
         #region Field and Property
         [Multiline]
         public string info = "Help info.";
 
-        public float xOfset = 10;
-        public float yOfset = 10;
+        public float top = 10;
+        public float left = 10;
         #endregion
 
         #region Private Method
         private void OnGUI()
         {
-            GUILayout.Space(yOfset);
+            GUILayout.Space(left);
             GUILayout.BeginHorizontal();
-            GUILayout.Space(xOfset);
+            GUILayout.Space(top);
             GUILayout.Label(info);
             GUILayout.EndHorizontal();
         }
