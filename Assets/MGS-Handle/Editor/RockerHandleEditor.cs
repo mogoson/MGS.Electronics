@@ -8,6 +8,11 @@
  *  Version      :  0.1.0
  *  Date         :  3/9/2018
  *  Description  :  Initial development version.
+ *  
+ *  Author       :  Mogoson
+ *  Version      :  0.1.1
+ *  Date         :  6/22/2018
+ *  Description  :  Optimize display of node and area.
  *************************************************************************/
 
 using Mogoson.UEditor;
@@ -46,14 +51,14 @@ namespace Mogoson.Handle
         protected virtual void OnSceneGUI()
         {
             Handles.color = Blue;
-            DrawSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
-            DrawSphereArrow(Target.transform.position, -Target.transform.forward, ArrowLength, NodeSize, Blue, string.Empty);
+            DrawAdaptiveSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
+            DrawAdaptiveSphereArrow(Target.transform.position, -Target.transform.forward, ArrowLength, NodeSize);
 
             var fromAxis = Quaternion.AngleAxis(Target.radiusAngle, CrossAxis) * ZeroAxis;
-            Handles.DrawWireArc(Target.transform.position, ZeroAxis, fromAxis, 360, AreaRadius);
+            DrawAdaptiveWireArc(Target.transform.position, ZeroAxis, fromAxis, 360, AreaRadius);
 
             Handles.color = TransparentBlue;
-            Handles.DrawSolidArc(Target.transform.position, ZeroAxis, fromAxis, 360, AreaRadius);
+            DrawAdaptiveSolidArc(Target.transform.position, ZeroAxis, fromAxis, 360, AreaRadius);
         }
         #endregion
     }

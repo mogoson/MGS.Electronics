@@ -8,6 +8,11 @@
  *  Version      :  0.1.0
  *  Date         :  3/9/2018
  *  Description  :  Initial development version.
+ *  
+ *  Author       :  Mogoson
+ *  Version      :  0.1.1
+ *  Date         :  6/22/2018
+ *  Description  :  Optimize display of node.
  *************************************************************************/
 
 using Mogoson.UEditor;
@@ -44,12 +49,12 @@ namespace Mogoson.Handle
         protected virtual void OnSceneGUI()
         {
             Handles.color = Blue;
-            DrawSphereCap(ZeroPoint, Quaternion.identity, NodeSize);
-            DrawSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
-            DrawSphereArrow(ZeroPoint, Target.transform.forward, Target.downOffset, NodeSize, Blue, string.Empty);
+            DrawAdaptiveSphereCap(ZeroPoint, Quaternion.identity, NodeSize);
+            DrawAdaptiveSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
+            DrawSphereArrow(ZeroPoint, Target.transform.forward, Target.downOffset, NodeSize);
 
             if (Target.selfLock)
-                DrawSphereCap(ZeroPoint + Target.transform.forward * Target.downOffset * Target.lockPercent, Quaternion.identity, NodeSize);
+                DrawAdaptiveSphereCap(ZeroPoint + Target.transform.forward * Target.downOffset * Target.lockPercent, Quaternion.identity, NodeSize);
         }
         #endregion
     }

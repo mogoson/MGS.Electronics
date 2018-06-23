@@ -44,20 +44,21 @@ namespace Mogoson.Handle
         protected virtual void OnSceneGUI()
         {
             Handles.color = Blue;
-            DrawSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
-            DrawCircleCap(Target.transform.position, Target.transform.rotation, AreaRadius);
-            DrawSphereArrow(Target.transform.position, Target.transform.forward, ArrowLength, NodeSize, Blue, "Axis");
-            DrawSphereArrow(Target.transform.position, ZeroAxis, ArrowLength, NodeSize, Blue, "Zero");
-            DrawSphereArrow(Target.transform.position, Target.transform.up, AreaRadius, NodeSize, Blue, string.Empty);
+            DrawAdaptiveSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
+            DrawAdaptiveCircleCap(Target.transform.position, Target.transform.rotation, AreaRadius);
+            DrawAdaptiveSphereArrow(Target.transform.position, Target.transform.forward, ArrowLength, NodeSize, "Axis");
+
+            DrawAdaptiveSphereArrow(Target.transform.position, ZeroAxis, ArrowLength, NodeSize, "Zero");
+            DrawAdaptiveSphereArrow(Target.transform.position, Target.transform.up, AreaRadius, NodeSize);
 
             Handles.color = TransparentBlue;
             if (Target.rangeLimit)
             {
                 var fromAxis = Quaternion.AngleAxis(Target.minAngle, Target.transform.forward) * ZeroAxis;
-                Handles.DrawSolidArc(Target.transform.position, Target.transform.forward, fromAxis, Target.maxAngle - Target.minAngle, AreaRadius);
+                DrawAdaptiveSolidArc(Target.transform.position, Target.transform.forward, fromAxis, Target.maxAngle - Target.minAngle, AreaRadius);
             }
             else
-                Handles.DrawSolidDisc(Target.transform.position, Target.transform.forward, AreaRadius);
+                DrawAdaptiveSolidDisc(Target.transform.position, Target.transform.forward, AreaRadius);
 
             if (Target.adsorbent)
             {
@@ -65,8 +66,9 @@ namespace Mogoson.Handle
                 foreach (var adsorbent in Target.adsorbentAngles)
                 {
                     var adsorbentAxis = Quaternion.AngleAxis(adsorbent, Target.transform.forward) * ZeroAxis;
-                    var adsorbentPosition = Target.transform.position + adsorbentAxis.normalized * AreaRadius;
-                    DrawSphereCap(adsorbentPosition, Quaternion.identity, NodeSize);
+                    var adaptiveScale = HandleUtility.GetHandleSize(Target.transform.position);
+                    var adsorbentPosition = Target.transform.position + adsorbentAxis.normalized * AreaRadius * adaptiveScale;
+                    DrawAdaptiveSphereCap(adsorbentPosition, Quaternion.identity, NodeSize);
                 }
             }
         }
