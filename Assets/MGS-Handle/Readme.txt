@@ -1,7 +1,7 @@
 ==========================================================================
   Copyright (C), 2016-2018, Mogoson Tech. Co., Ltd.
   Name: MGS-Handle
-  Author: Mogoson   Version: 0.1.1   Date: 1/17/2018
+  Author: Mogoson   Version: 0.1.2   Date: 6/25/2018
 ==========================================================================
   [Summary]
     Unity plugin for make button switch, knob switch and rocker handle
