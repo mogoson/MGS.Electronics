@@ -24,17 +24,17 @@
 - Demos in the path "MGS-Handle/Scenes" provide reference to you.
 
 ## Preview
-- ButtonSwitch
+- Button Switch
 
-![ButtonSwitch](./Attachments/README_Image/ButtonSwitch.gif)
+![Button Switch](./Attachments/README_Image/ButtonSwitch.gif)
 
-- KnobSwitch
+- Knob Switch
 
-![KnobSwitch](./Attachments/README_Image/KnobSwitch.gif)
+![Knob Switch](./Attachments/README_Image/KnobSwitch.gif)
 
-- RockerHandle
+- Rocker Handle
 
-![RockerHandle](./Attachments/README_Image/RockerHandle.gif)﻿
+![Rocker Handle](./Attachments/README_Image/RockerHandle.gif)﻿
 
 ## Contact
-- If you have any questions, feel free to contact me at mogoson@qq.com.
+- If you have any questions, feel free to contact me at mogoson@outlook.com.

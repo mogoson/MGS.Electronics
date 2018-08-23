@@ -24,17 +24,17 @@
 - “MGS-Handle/Scenes”目录下存有上述功能的演示案例，供读者参考。
 
 ## 预览
-- ButtonSwitch
+- Button Switch
 
-![ButtonSwitch](./Attachments/README_Image/ButtonSwitch.gif)
+![Button Switch](./Attachments/README_Image/ButtonSwitch.gif)
 
-- KnobSwitch
+- Knob Switch
 
-![KnobSwitch](./Attachments/README_Image/KnobSwitch.gif)
+![Knob Switch](./Attachments/README_Image/KnobSwitch.gif)
 
-- RockerHandle
+- Rocker Handle
 
-![RockerHandle](./Attachments/README_Image/RockerHandle.gif)﻿
+![Rocker Handle](./Attachments/README_Image/RockerHandle.gif)﻿
 
 ## 联系
-- 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。
+- 如果你有任何问题或者建议，欢迎通过mogoson@outlook.com联系我。
