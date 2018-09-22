@@ -14,7 +14,7 @@ using Mogoson.UEditor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Mogoson.Handle
+namespace Mogoson.Device
 {
     [CustomEditor(typeof(KnobSwitch), true)]
     [CanEditMultipleObjects]
@@ -52,18 +52,18 @@ namespace Mogoson.Handle
             DrawAdaptiveSphereArrow(Target.transform.position, Target.transform.up, AreaRadius, NodeSize);
 
             Handles.color = TransparentBlue;
-            if (Target.rangeLimit)
+            if (Target.RotateLimit)
             {
-                var fromAxis = Quaternion.AngleAxis(Target.minAngle, Target.transform.forward) * ZeroAxis;
-                DrawAdaptiveSolidArc(Target.transform.position, Target.transform.forward, fromAxis, Target.maxAngle - Target.minAngle, AreaRadius);
+                var fromAxis = Quaternion.AngleAxis(Target.AngleInterval.min, Target.transform.forward) * ZeroAxis;
+                DrawAdaptiveSolidArc(Target.transform.position, Target.transform.forward, fromAxis, Target.AngleInterval.max - Target.AngleInterval.min, AreaRadius);
             }
             else
                 DrawAdaptiveSolidDisc(Target.transform.position, Target.transform.forward, AreaRadius);
 
-            if (Target.adsorbent)
+            if (Target.Adsorbent)
             {
                 Handles.color = Blue;
-                foreach (var adsorbent in Target.adsorbentAngles)
+                foreach (var adsorbent in Target.AdsorbentAngles)
                 {
                     var adsorbentAxis = Quaternion.AngleAxis(adsorbent, Target.transform.forward) * ZeroAxis;
                     var adaptiveScale = HandleUtility.GetHandleSize(Target.transform.position);

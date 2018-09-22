@@ -19,7 +19,7 @@ using Mogoson.UEditor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Mogoson.Handle
+namespace Mogoson.Device
 {
     [CustomEditor(typeof(ButtonSwitch), true)]
     [CanEditMultipleObjects]
@@ -51,10 +51,10 @@ namespace Mogoson.Handle
             Handles.color = Blue;
             DrawAdaptiveSphereCap(ZeroPoint, Quaternion.identity, NodeSize);
             DrawAdaptiveSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
-            DrawSphereArrow(ZeroPoint, Target.transform.forward, Target.downOffset, NodeSize);
+            DrawSphereArrow(ZeroPoint, Target.transform.forward, Target.DownOffset, NodeSize);
 
-            if (Target.selfLock)
-                DrawAdaptiveSphereCap(ZeroPoint + Target.transform.forward * Target.downOffset * Target.lockPercent, Quaternion.identity, NodeSize);
+            if (Target.SelfLock)
+                DrawAdaptiveSphereCap(ZeroPoint + Target.transform.forward * Target.DownOffset * Target.LockPercent, Quaternion.identity, NodeSize);
         }
         #endregion
     }
