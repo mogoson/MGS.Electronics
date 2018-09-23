@@ -54,8 +54,8 @@ namespace Mogoson.Device
             Handles.color = TransparentBlue;
             if (Target.RotateLimit)
             {
-                var fromAxis = Quaternion.AngleAxis(Target.AngleInterval.min, Target.transform.forward) * ZeroAxis;
-                DrawAdaptiveSolidArc(Target.transform.position, Target.transform.forward, fromAxis, Target.AngleInterval.max - Target.AngleInterval.min, AreaRadius);
+                var fromAxis = Quaternion.AngleAxis(Target.AngleRange.min, Target.transform.forward) * ZeroAxis;
+                DrawAdaptiveSolidArc(Target.transform.position, Target.transform.forward, fromAxis, Target.AngleRange.max - Target.AngleRange.min, AreaRadius);
             }
             else
                 DrawAdaptiveSolidDisc(Target.transform.position, Target.transform.forward, AreaRadius);

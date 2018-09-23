@@ -10,9 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using Mogoson.Mathematics;
 using System;
-using System.Collections.Generic;
 
 namespace Mogoson.Device
 {
@@ -23,6 +21,42 @@ namespace Mogoson.Device
     {
         MouseX = 0,
         MouseY = 1
+    }
+
+    /// <summary>
+    /// Range form min to max.
+    /// </summary>
+    [Serializable]
+    public struct Range
+    {
+        /// <summary>
+        /// Min value of range.
+        /// </summary>
+        public float min;
+
+        /// <summary>
+        /// Max value of range.
+        /// </summary>
+        public float max;
+
+        /// <summary>
+        /// Length of range.
+        /// </summary>
+        public float Length
+        {
+            get { return max - min; }
+        }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="min">Min value of range.</param>
+        /// <param name="max">Max value of range.</param>
+        public Range(float min, float max)
+        {
+            this.min = min;
+            this.max = max;
+        }
     }
 
     /// <summary>
@@ -47,12 +81,12 @@ namespace Mogoson.Device
         bool RotateLimit { set; get; }
 
         /// <summary>
-        /// Interval of rotate angle.
+        /// Range of rotate angle.
         /// </summary>
-        Interval AngleInterval { set; get; }
+        Range AngleRange { set; get; }
 
         /// <summary>
-        /// Adsorbent to target angle on mouse up.
+        /// Adsorbent to target angle on switch release.
         /// </summary>
         bool Adsorbent { set; get; }
 

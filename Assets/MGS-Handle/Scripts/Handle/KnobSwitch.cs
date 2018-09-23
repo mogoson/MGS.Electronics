@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using Mogoson.Mathematics;
 using System;
 using UnityEngine;
 
@@ -49,10 +48,10 @@ namespace Mogoson.Device
         protected bool rotateLimit = false;
 
         /// <summary>
-        /// Interval of rotate angle.
+        /// Range of rotate angle.
         /// </summary>
         [SerializeField]
-        protected Interval angleInterval = new Interval(-60, 60);
+        protected Range angleRange = new Range(-60, 60);
 
         /// <summary>
         /// Adsorbent to target angle on mouse up.
@@ -108,12 +107,12 @@ namespace Mogoson.Device
         }
 
         /// <summary>
-        /// Interval of rotate angle.
+        /// Range of rotate angle.
         /// </summary>
-        public Interval AngleInterval
+        public Range AngleRange
         {
-            set { angleInterval = value; }
-            get { return angleInterval; }
+            set { angleRange = value; }
+            get { return angleRange; }
         }
 
         /// <summary>
@@ -148,8 +147,8 @@ namespace Mogoson.Device
             {
                 if (rotateLimit)
                 {
-                    var range = angleInterval.Length;
-                    return (Angle - angleInterval.min) / (range == 0 ? 1 : range);
+                    var range = angleRange.Length;
+                    return (Angle - angleRange.min) / (range == 0 ? 1 : range);
                 }
                 else
                     return 0;
@@ -188,7 +187,7 @@ namespace Mogoson.Device
 
             Angle += GetMouseInput() * rotateSpeed * Time.deltaTime;
             if (rotateLimit)
-                Angle = Mathf.Clamp(Angle, angleInterval.min, angleInterval.max);
+                Angle = Mathf.Clamp(Angle, angleRange.min, angleRange.max);
             RotateKnob(Angle);
 
             if (OnSwitchDrag != null)
