@@ -60,10 +60,10 @@ namespace Mogoson.Device
         protected bool adsorbent = false;
 
         /// <summary>
-        /// Target adsorbent angles.
+        /// Adsorbable angles.
         /// </summary>
         [SerializeField]
-        protected float[] adsorbentAngles;
+        protected float[] adsorbableAngles;
 
         /// <summary>
         /// Start angles.
@@ -125,12 +125,12 @@ namespace Mogoson.Device
         }
 
         /// <summary>
-        /// Target adsorbent angles.
+        /// Adsorbable angles.
         /// </summary>
-        public float[] AdsorbentAngles
+        public float[] AdsorbableAngles
         {
-            set { adsorbentAngles = value; }
-            get { return adsorbentAngles; }
+            set { adsorbableAngles = value; }
+            get { return adsorbableAngles; }
         }
 
         /// <summary>
@@ -150,8 +150,7 @@ namespace Mogoson.Device
                     var range = angleRange.Length;
                     return (Angle - angleRange.min) / (range == 0 ? 1 : range);
                 }
-                else
-                    return 0;
+                return 0;
             }
         }
 
@@ -183,15 +182,21 @@ namespace Mogoson.Device
         protected virtual void OnMouseDrag()
         {
             if (!isEnable)
+            {
                 return;
+            }
 
             Angle += GetMouseInput() * rotateSpeed * Time.deltaTime;
             if (rotateLimit)
+            {
                 Angle = Mathf.Clamp(Angle, angleRange.min, angleRange.max);
+            }
             RotateKnob(Angle);
 
             if (OnSwitchDrag != null)
+            {
                 OnSwitchDrag.Invoke();
+            }
         }
 
         /// <summary>
@@ -200,30 +205,27 @@ namespace Mogoson.Device
         protected virtual void OnMouseUp()
         {
             if (!isEnable)
+            {
                 return;
+            }
 
             if (OnSwitchRelease != null)
-                OnSwitchRelease.Invoke();
-
-            if (!adsorbent || adsorbentAngles.Length == 0)
-                return;
-
-            var nearAngle = 0f;
-            var tempNear = float.PositiveInfinity;
-            foreach (var adsorbentAngle in adsorbentAngles)
             {
-                var deltaAngle = Mathf.Abs(Angle - adsorbentAngle);
-                if (deltaAngle < tempNear)
-                {
-                    tempNear = deltaAngle;
-                    nearAngle = adsorbentAngle;
-                }
+                OnSwitchRelease.Invoke();
             }
-            Angle = nearAngle;
+
+            if (!adsorbent || adsorbableAngles.Length == 0)
+            {
+                return;
+            }
+
+            Angle = GetAdsorbentAngle(Angle, adsorbableAngles);
             RotateKnob(Angle);
 
             if (OnSwitchAdsorbent != null)
+            {
                 OnSwitchAdsorbent.Invoke();
+            }
         }
 
         /// <summary>
@@ -242,9 +244,33 @@ namespace Mogoson.Device
         protected float GetMouseInput()
         {
             if (mouseInput == MouseAxis.MouseX)
+            {
                 return Input.GetAxis("Mouse X");
-            else
-                return Input.GetAxis("Mouse Y");
+            }
+            return Input.GetAxis("Mouse Y");
+        }
+
+        /// <summary>
+        /// Get the adsorbent angle base on switch current angle.
+        /// </summary>
+        /// <param name="currentAngle">Current angle of knob.</param>
+        /// <param name="adsorbableAngles">Adsorbable angles of knob.</param>
+        /// <returns>Target adsorbent angle of knob.</returns>
+        protected float GetAdsorbentAngle(float currentAngle, float[] adsorbableAngles)
+        {
+            var nearAngle = 0f;
+            var deltaAngle = 0f;
+            var nearDelta = float.PositiveInfinity;
+            foreach (var adsorbentAngle in adsorbableAngles)
+            {
+                deltaAngle = Mathf.Abs(currentAngle - adsorbentAngle);
+                if (deltaAngle < nearDelta)
+                {
+                    nearDelta = deltaAngle;
+                    nearAngle = adsorbentAngle;
+                }
+            }
+            return nearAngle;
         }
         #endregion
     }

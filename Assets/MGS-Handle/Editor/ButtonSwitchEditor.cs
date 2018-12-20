@@ -36,11 +36,12 @@ namespace Mogoson.Device
                 {
                     var point = Target.StartPosition;
                     if (Target.transform.parent)
+                    {
                         point = Target.transform.parent.TransformPoint(point);
+                    }
                     return point;
                 }
-                else
-                    return Target.transform.position;
+                return Target.transform.position;
             }
         }
         #endregion
@@ -54,7 +55,9 @@ namespace Mogoson.Device
             DrawSphereArrow(ZeroPoint, Target.transform.forward, Target.DownOffset, NodeSize);
 
             if (Target.SelfLock)
+            {
                 DrawAdaptiveSphereCap(ZeroPoint + Target.transform.forward * Target.DownOffset * Target.LockPercent, Quaternion.identity, NodeSize);
+            }
         }
         #endregion
     }

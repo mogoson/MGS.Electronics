@@ -29,13 +29,14 @@ namespace Mogoson.Device
             {
                 if (Application.isPlaying)
                 {
-                    var up = Quaternion.Euler(Target.StartAngles) * Vector3.up;
+                    var axis = Quaternion.Euler(Target.StartAngles) * Vector3.up;
                     if (Target.transform.parent)
-                        up = Target.transform.parent.rotation * up;
-                    return up;
+                    {
+                        axis = Target.transform.parent.rotation * axis;
+                    }
+                    return axis;
                 }
-                else
-                    return Target.transform.up;
+                return Target.transform.up;
             }
         }
         #endregion
@@ -58,12 +59,14 @@ namespace Mogoson.Device
                 DrawAdaptiveSolidArc(Target.transform.position, Target.transform.forward, fromAxis, Target.AngleRange.max - Target.AngleRange.min, AreaRadius);
             }
             else
+            {
                 DrawAdaptiveSolidDisc(Target.transform.position, Target.transform.forward, AreaRadius);
+            }
 
             if (Target.Adsorbent)
             {
                 Handles.color = Blue;
-                foreach (var adsorbent in Target.AdsorbentAngles)
+                foreach (var adsorbent in Target.AdsorbableAngles)
                 {
                     var adsorbentAxis = Quaternion.AngleAxis(adsorbent, Target.transform.forward) * ZeroAxis;
                     var adaptiveScale = HandleUtility.GetHandleSize(Target.transform.position);

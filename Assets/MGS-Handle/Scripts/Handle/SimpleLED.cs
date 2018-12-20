@@ -68,7 +68,9 @@ namespace Mogoson.Device
         public override void Open()
         {
             if (isEnable)
+            {
                 LEDRenderer.material = highlightMat;
+            }
         }
 
         /// <summary>
@@ -77,7 +79,9 @@ namespace Mogoson.Device
         public override void Close()
         {
             if (isEnable)
+            {
                 LEDRenderer.material = defaultMat;
+            }
         }
         #endregion
     }

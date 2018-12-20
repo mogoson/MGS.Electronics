@@ -34,13 +34,14 @@ namespace Mogoson.Device
             {
                 if (Application.isPlaying)
                 {
-                    var back = Quaternion.Euler(Target.StartAngles) * Vector3.back;
+                    var axis = Quaternion.Euler(Target.StartAngles) * Vector3.back;
                     if (Target.transform.parent)
-                        back = Target.transform.parent.rotation * back;
-                    return back;
+                    {
+                        axis = Target.transform.parent.rotation * axis;
+                    }
+                    return axis;
                 }
-                else
-                    return -Target.transform.forward;
+                return -Target.transform.forward;
             }
         }
 

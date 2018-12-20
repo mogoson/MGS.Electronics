@@ -129,17 +129,23 @@ namespace Mogoson.Device
         protected virtual void OnMouseDrag()
         {
             if (!isEnable)
+            {
                 return;
+            }
 
             var x = Input.GetAxis("Mouse Y");
             var y = Input.GetAxis("Mouse X");
             angles += new Vector3(x, -y) * rotateSpeed * Time.deltaTime;
             if (angles.magnitude > radiusAngle)
+            {
                 angles = angles.normalized * radiusAngle;
+            }
             RotateHandle(angles);
 
             if (OnHandleDrag != null)
+            {
                 OnHandleDrag.Invoke();
+            }
         }
 
         /// <summary>
@@ -148,13 +154,19 @@ namespace Mogoson.Device
         protected virtual void OnMouseUp()
         {
             if (!isEnable)
+            {
                 return;
+            }
 
             if (revertSpeed > 0)
+            {
                 InvokeRepeating("RevertHandle", 0, Time.fixedDeltaTime);
+            }
 
             if (OnHandleRelease != null)
+            {
                 OnHandleRelease.Invoke();
+            }
         }
 
         /// <summary>
@@ -167,7 +179,9 @@ namespace Mogoson.Device
                 CancelInvoke("RevertHandle");
 
                 if (OnHandleRevert != null)
+                {
                     OnHandleRevert.Invoke();
+                }
             }
             angles = Vector3.MoveTowards(angles, Vector3.zero, revertSpeed * Time.deltaTime);
             RotateHandle(angles);

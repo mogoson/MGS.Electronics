@@ -93,7 +93,7 @@ namespace Mogoson.Device
         /// <summary>
         /// Target adsorbent angles.
         /// </summary>
-        float[] AdsorbentAngles { set; get; }
+        float[] AdsorbableAngles { set; get; }
 
         /// <summary>
         /// Switch current angle.

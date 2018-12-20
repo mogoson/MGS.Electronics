@@ -82,10 +82,12 @@ namespace Mogoson.Device
         {
             get
             {
-                var forward = transform.forward;
+                var axis = transform.forward;
                 if (transform.parent)
-                    forward = transform.parent.InverseTransformDirection(forward);
-                return forward;
+                {
+                    axis = transform.parent.InverseTransformDirection(axis);
+                }
+                return axis;
             }
         }
 
@@ -147,7 +149,9 @@ namespace Mogoson.Device
             set
             {
                 if (value is MonoLED)
+                {
                     led = value as MonoLED;
+                }
             }
             get { return led; }
         }
@@ -185,17 +189,23 @@ namespace Mogoson.Device
         protected virtual void OnMouseDown()
         {
             if (!isEnable)
+            {
                 return;
+            }
 
             IsDown = true;
             currentOffset = downOffset;
             TranslateButton(currentOffset);
 
             if (useLED)
+            {
                 led.Open();
+            }
 
             if (OnSwitchDown != null)
+            {
                 OnSwitchDown.Invoke();
+            }
         }
 
         /// <summary>
@@ -204,17 +214,23 @@ namespace Mogoson.Device
         protected virtual void OnMouseUp()
         {
             if (!isEnable)
+            {
                 return;
+            }
 
             if (selfLock)
+            {
                 isLock = !isLock;
+            }
 
             if (isLock)
             {
                 currentOffset = downOffset * lockPercent;
 
                 if (OnSwitchLock != null)
+                {
                     OnSwitchLock.Invoke();
+                }
             }
             else
             {
@@ -222,12 +238,16 @@ namespace Mogoson.Device
                 currentOffset = 0;
 
                 if (OnSwitchUp != null)
+                {
                     OnSwitchUp.Invoke();
+                }
             }
             TranslateButton(currentOffset);
 
             if (useLED && !isLock)
+            {
                 led.Close();
+            }
         }
 
         /// <summary>
