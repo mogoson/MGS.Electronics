@@ -1,0 +1,621 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MGS.ElectronicComponent</name>
+    </assembly>
+    <members>
+        <member name="T:MGS.ElectronicComponent.Button">
+            <summary>
+            Button component.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Button.downOffset">
+            <summary>
+            Button down offset.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Button.selfLock">
+            <summary>
+            Self lock on button down?
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Button.lockPercent">
+            <summary>
+            Self lock offset percent.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Button.useLED">
+            <summary>
+            Toggle LED on toggle button?
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Button.monoLED">
+            <summary>
+            LED of button.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Button.currentOffset">
+            <summary>
+            Current offset base start position.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Button.isLock">
+            <summary>
+            Current self lock state.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Button.MoveAxis">
+            <summary>
+            Local move axis.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Button.StartPosition">
+            <summary>
+            Start position.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Button.DownOffset">
+            <summary>
+            Button down offset.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Button.SelfLock">
+            <summary>
+            Self lock on button down?
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Button.LockPercent">
+            <summary>
+            Self lock offset percent.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Button.UseLED">
+            <summary>
+            Toggle LED on toggle button?
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Button.LED">
+            <summary>
+            LED of button.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Button.IsDown">
+            <summary>
+            Button is down?
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.Button.OnUp">
+            <summary>
+            Button up event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.Button.OnDown">
+            <summary>
+            Button down event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.Button.OnLock">
+            <summary>
+            Button lock event.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Button.OnMouseDown">
+            <summary>
+            Response mouse left button down.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Button.OnMouseUp">
+            <summary>
+            Response mouse left button up.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Button.Translate(System.Single)">
+            <summary>
+            Translate button to target position.
+            </summary>
+            <param name="offset">Offset of z axis.</param>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Button.Initialize">
+            <summary>
+            Initialize button component.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.Knob">
+            <summary>
+            Knob component.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Knob.inputAxis">
+            <summary>
+            Input axis.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Knob.rotateSpeed">
+            <summary>
+            Knob rotate speed.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Knob.rotateLimit">
+            <summary>
+            Limit rotate angle?
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Knob.angleRange">
+            <summary>
+            Range of rotate angle.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Knob.adsorbent">
+            <summary>
+            Adsorbent to target angle on mouse up?
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Knob.adsorbableAngles">
+            <summary>
+            Adsorbable angles.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Knob.StartAngles">
+            <summary>
+            Start angles.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Knob.InputAxis">
+            <summary>
+            Input axis.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Knob.RotateSpeed">
+            <summary>
+            Knob rotate speed.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Knob.RotateLimit">
+            <summary>
+            Limit rotate angle?
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Knob.AngleRange">
+            <summary>
+            Range of rotate angle.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Knob.Adsorbent">
+            <summary>
+            Adsorbent to target angle on mouse up?
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Knob.AdsorbableAngles">
+            <summary>
+            Adsorbable angles.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Knob.Angle">
+            <summary>
+            Knob current angle.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Knob.Percent">
+            <summary>
+            Knob current rotate percent base range.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.Knob.OnDrag">
+            <summary>
+            Knob drag event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.Knob.OnRelease">
+            <summary>
+            Knob release event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.Knob.OnAdsorbent">
+            <summary>
+            Knob adsorbent event.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Knob.OnMouseDrag">
+            <summary>
+            Response mouse left button drag.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Knob.OnMouseUp">
+            <summary>
+            Response mouse left button up.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Knob.Rotate(System.Single)">
+            <summary>
+            Rotate knob to target angle.
+            </summary>
+            <param name="rotateAngle">Rotate angle.</param>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Knob.GetAdsorbentAngle(System.Single,System.Single[])">
+            <summary>
+            Get the adsorbent angle base on knob current angle.
+            </summary>
+            <param name="currentAngle">Current angle of knob.</param>
+            <param name="adsorbableAngles">Adsorbable angles of knob.</param>
+            <returns>Target adsorbent angle of knob.</returns>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Knob.Initialize">
+            <summary>
+            Initialize knob component.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.MonoElectronicComponent">
+            <summary>
+            Electronic component.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.MonoElectronicComponent.isEnabled">
+            <summary>
+            The component is enabled to control?
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.MonoElectronicComponent.Enabled">
+            <summary>
+            The component is enabled to control?
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.MonoElectronicComponent.Awake">
+            <summary>
+            Awake component.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.MonoElectronicComponent.Initialize">
+            <summary>
+            Initialize component.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.MonoLED">
+            <summary>
+            LED component.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.MonoLED.Open">
+            <summary>
+            Open LED.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.MonoLED.Close">
+            <summary>
+            Close LED.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.Rocker">
+            <summary>
+            Rocker component.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Rocker.radiusAngle">
+            <summary>
+            Radius angle.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Rocker.rotateSpeed">
+            <summary>
+            Rocker rotate speed.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Rocker.revertSpeed">
+            <summary>
+            Revert speed.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Rocker.angles">
+            <summary>
+            Current angles.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Rocker.StartAngles">
+            <summary>
+            Start angles.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Rocker.RadiusAngle">
+            <summary>
+            Radius angle.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Rocker.RotateSpeed">
+            <summary>
+            Rocker rotate speed.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Rocker.RevertSpeed">
+            <summary>
+            Revert speed.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Rocker.Vector">
+            <summary>
+            Rocker current angles normalized vector.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.Rocker.OnDrag">
+            <summary>
+            Rocker drag event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.Rocker.OnRelease">
+            <summary>
+            Rocker Release event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.Rocker.OnRevert">
+            <summary>
+            Rocker revert event.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Rocker.OnMouseDrag">
+            <summary>
+            Drag rocker.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Rocker.OnMouseUp">
+            <summary>
+            Release rocker.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Rocker.Revert">
+            <summary>
+            Revert rocker to default.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Rocker.Rotate(UnityEngine.Vector3)">
+            <summary>
+            Rotate rocker to target angles.
+            </summary>
+            <param name="eulerAngles">Rotate euler angles.</param>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Rocker.Initialize">
+            <summary>
+            Initialize rocker component.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.LED">
+            <summary>
+            LED component.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.LED.highlightMat">
+            <summary>
+            Highlight material of LED.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.LED.defaultMat">
+            <summary>
+            Default material of LED.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.LED.LEDRenderer">
+            <summary>
+            Renderer of LED.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.LED.Initialize">
+            <summary>
+            Initialize LED.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.LED.Open">
+            <summary>
+            Open LED.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.LED.Close">
+            <summary>
+            Close LED.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.IButton">
+            <summary>
+            Interface for button.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IButton.DownOffset">
+            <summary>
+            Switch down offset.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IButton.SelfLock">
+            <summary>
+            Self lock on button down?
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IButton.LockPercent">
+            <summary>
+            Self lock offset percent.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IButton.UseLED">
+            <summary>
+            Toggle LED on toggle button?
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IButton.LED">
+            <summary>
+            LED of button.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IButton.IsDown">
+            <summary>
+            Button is down?
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.IButton.OnUp">
+            <summary>
+            Button up event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.IButton.OnDown">
+            <summary>
+            Button down event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.IButton.OnLock">
+            <summary>
+            Button lock event.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.IElectronicComponent">
+            <summary>
+            Interface for electronic component.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IElectronicComponent.Enabled">
+            <summary>
+            The component is enabled to control?
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.IElectronicComponent.Initialize">
+            <summary>
+            Initialize component.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.IKnob">
+            <summary>
+            Interface for knob.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IKnob.InputAxis">
+            <summary>
+            Input axis.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IKnob.RotateSpeed">
+            <summary>
+            Switch rotate speed.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IKnob.RotateLimit">
+            <summary>
+            Limit rotate angle?
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IKnob.AngleRange">
+            <summary>
+            Range of rotate angle.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IKnob.Adsorbent">
+            <summary>
+            Adsorbent to target angle on knob release?
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IKnob.AdsorbableAngles">
+            <summary>
+            Target adsorbent angles.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IKnob.Angle">
+            <summary>
+            Switch current angle.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IKnob.Percent">
+            <summary>
+            Knob current rotate percent base range.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.IKnob.OnDrag">
+            <summary>
+            Knob drag event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.IKnob.OnRelease">
+            <summary>
+            Knob release event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.IKnob.OnAdsorbent">
+            <summary>
+            Knob adsorbent event.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.ILED">
+            <summary>
+            Interface for LED.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.ILED.Open">
+            <summary>
+            Open LED.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.ILED.Close">
+            <summary>
+            Close LED.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.IRocker">
+            <summary>
+            Interface for rocker.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IRocker.RadiusAngle">
+            <summary>
+            Radius angle.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IRocker.RotateSpeed">
+            <summary>
+            Rocker rotate speed.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IRocker.RevertSpeed">
+            <summary>
+            Revert speed.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.IRocker.Vector">
+            <summary>
+            Rocker current angles normalized vector.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.IRocker.OnDrag">
+            <summary>
+            Rocker drag event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.IRocker.OnRelease">
+            <summary>
+            Rocker Release event.
+            </summary>
+        </member>
+        <member name="E:MGS.ElectronicComponent.IRocker.OnRevert">
+            <summary>
+            Rocker revert event.
+            </summary>
+        </member>
+        <member name="T:MGS.ElectronicComponent.Range">
+            <summary>
+            Range form min to max.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Range.min">
+            <summary>
+            Min value of range.
+            </summary>
+        </member>
+        <member name="F:MGS.ElectronicComponent.Range.max">
+            <summary>
+            Max value of range.
+            </summary>
+        </member>
+        <member name="P:MGS.ElectronicComponent.Range.Length">
+            <summary>
+            Length of range from min to max.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Range.#ctor(System.Single,System.Single)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="min">Min value of range.</param>
+            <param name="max">Max value of range.</param>
+        </member>
+    </members>
+</doc>
