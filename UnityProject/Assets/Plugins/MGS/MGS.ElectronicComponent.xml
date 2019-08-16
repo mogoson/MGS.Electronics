@@ -84,19 +84,24 @@
             Button is down?
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.Button.OnUp">
+        <member name="P:MGS.ElectronicComponent.Button.OnUp">
             <summary>
             Button up event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.Button.OnDown">
+        <member name="P:MGS.ElectronicComponent.Button.OnDown">
             <summary>
             Button down event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.Button.OnLock">
+        <member name="P:MGS.ElectronicComponent.Button.OnLock">
             <summary>
             Button lock event.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Button.Initialize">
+            <summary>
+            Initialize button component.
             </summary>
         </member>
         <member name="M:MGS.ElectronicComponent.Button.OnMouseDown">
@@ -114,11 +119,6 @@
             Translate button to target position.
             </summary>
             <param name="offset">Offset of z axis.</param>
-        </member>
-        <member name="M:MGS.ElectronicComponent.Button.Initialize">
-            <summary>
-            Initialize button component.
-            </summary>
         </member>
         <member name="T:MGS.ElectronicComponent.Knob">
             <summary>
@@ -200,19 +200,24 @@
             Knob current rotate percent base range.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.Knob.OnDrag">
+        <member name="P:MGS.ElectronicComponent.Knob.OnDrag">
             <summary>
             Knob drag event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.Knob.OnRelease">
+        <member name="P:MGS.ElectronicComponent.Knob.OnRelease">
             <summary>
             Knob release event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.Knob.OnAdsorbent">
+        <member name="P:MGS.ElectronicComponent.Knob.OnAdsorbent">
             <summary>
             Knob adsorbent event.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Knob.Initialize">
+            <summary>
+            Initialize knob component.
             </summary>
         </member>
         <member name="M:MGS.ElectronicComponent.Knob.OnMouseDrag">
@@ -238,11 +243,6 @@
             <param name="currentAngle">Current angle of knob.</param>
             <param name="adsorbableAngles">Adsorbable angles of knob.</param>
             <returns>Target adsorbent angle of knob.</returns>
-        </member>
-        <member name="M:MGS.ElectronicComponent.Knob.Initialize">
-            <summary>
-            Initialize knob component.
-            </summary>
         </member>
         <member name="T:MGS.ElectronicComponent.MonoElectronicComponent">
             <summary>
@@ -334,19 +334,24 @@
             Rocker current angles normalized vector.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.Rocker.OnDrag">
+        <member name="P:MGS.ElectronicComponent.Rocker.OnDrag">
             <summary>
             Rocker drag event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.Rocker.OnRelease">
+        <member name="P:MGS.ElectronicComponent.Rocker.OnRelease">
             <summary>
             Rocker Release event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.Rocker.OnRevert">
+        <member name="P:MGS.ElectronicComponent.Rocker.OnRevert">
             <summary>
             Rocker revert event.
+            </summary>
+        </member>
+        <member name="M:MGS.ElectronicComponent.Rocker.Initialize">
+            <summary>
+            Initialize rocker component.
             </summary>
         </member>
         <member name="M:MGS.ElectronicComponent.Rocker.OnMouseDrag">
@@ -369,11 +374,6 @@
             Rotate rocker to target angles.
             </summary>
             <param name="eulerAngles">Rotate euler angles.</param>
-        </member>
-        <member name="M:MGS.ElectronicComponent.Rocker.Initialize">
-            <summary>
-            Initialize rocker component.
-            </summary>
         </member>
         <member name="T:MGS.ElectronicComponent.LED">
             <summary>
@@ -445,17 +445,17 @@
             Button is down?
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.IButton.OnUp">
+        <member name="P:MGS.ElectronicComponent.IButton.OnUp">
             <summary>
             Button up event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.IButton.OnDown">
+        <member name="P:MGS.ElectronicComponent.IButton.OnDown">
             <summary>
             Button down event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.IButton.OnLock">
+        <member name="P:MGS.ElectronicComponent.IButton.OnLock">
             <summary>
             Button lock event.
             </summary>
@@ -468,11 +468,6 @@
         <member name="P:MGS.ElectronicComponent.IElectronicComponent.Enabled">
             <summary>
             The component is enabled to control?
-            </summary>
-        </member>
-        <member name="M:MGS.ElectronicComponent.IElectronicComponent.Initialize">
-            <summary>
-            Initialize component.
             </summary>
         </member>
         <member name="T:MGS.ElectronicComponent.IKnob">
@@ -520,17 +515,17 @@
             Knob current rotate percent base range.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.IKnob.OnDrag">
+        <member name="P:MGS.ElectronicComponent.IKnob.OnDrag">
             <summary>
             Knob drag event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.IKnob.OnRelease">
+        <member name="P:MGS.ElectronicComponent.IKnob.OnRelease">
             <summary>
             Knob release event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.IKnob.OnAdsorbent">
+        <member name="P:MGS.ElectronicComponent.IKnob.OnAdsorbent">
             <summary>
             Knob adsorbent event.
             </summary>
@@ -575,47 +570,20 @@
             Rocker current angles normalized vector.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.IRocker.OnDrag">
+        <member name="P:MGS.ElectronicComponent.IRocker.OnDrag">
             <summary>
             Rocker drag event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.IRocker.OnRelease">
+        <member name="P:MGS.ElectronicComponent.IRocker.OnRelease">
             <summary>
             Rocker Release event.
             </summary>
         </member>
-        <member name="E:MGS.ElectronicComponent.IRocker.OnRevert">
+        <member name="P:MGS.ElectronicComponent.IRocker.OnRevert">
             <summary>
             Rocker revert event.
             </summary>
-        </member>
-        <member name="T:MGS.ElectronicComponent.Range">
-            <summary>
-            Range form min to max.
-            </summary>
-        </member>
-        <member name="F:MGS.ElectronicComponent.Range.min">
-            <summary>
-            Min value of range.
-            </summary>
-        </member>
-        <member name="F:MGS.ElectronicComponent.Range.max">
-            <summary>
-            Max value of range.
-            </summary>
-        </member>
-        <member name="P:MGS.ElectronicComponent.Range.Length">
-            <summary>
-            Length of range from min to max.
-            </summary>
-        </member>
-        <member name="M:MGS.ElectronicComponent.Range.#ctor(System.Single,System.Single)">
-            <summary>
-            Constructor.
-            </summary>
-            <param name="min">Min value of range.</param>
-            <param name="max">Max value of range.</param>
         </member>
     </members>
 </doc>

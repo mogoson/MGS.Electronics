@@ -1,7 +1,7 @@
 ==========================================================================
   Copyright (C), 2016-2019, Mogoson Tech. Co., Ltd.
   Name: MGS-ElectronicComponent
-  Author: Mogoson   Version: 1.0.0   Date: 5/12/2019
+  Author: Mogoson   Version: 1.0.0   Date: 8/16/2019
 ==========================================================================
   [Summary]
     Unity plugin for make electronic component in scene.
