@@ -1,4 +1,4 @@
-﻿# MGS-ElectronicComponent
+﻿# MGS-ElecEquipment
 
 ## Summary
 - Unity plugin for make electronic component in scene.
@@ -19,8 +19,8 @@
 - Simple LED light.
 
 ## Demo
-- Prefabs in the path "MGS-ElectronicComponent/Prefabs" provide reference to you.
-- Demos in the path "MGS-ElectronicComponent/Scenes" provide reference to you.
+- Prefabs in the path "MGS-Equipment/Prefabs" provide reference to you.
+- Demos in the path "MGS-Equipment/Scenes" provide reference to you.
 
 ## Preview
 - Button
