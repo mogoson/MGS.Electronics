@@ -1,39 +1,48 @@
-﻿# MGS-ElecEquipment
+[TOC]
+
+# MGS.Element
 
 ## Summary
-- Unity plugin for make electronic component in scene.
+- Unity plugin for make electronic element in scene.
 
 ## Environment
-- Unity 5.0 or above.
 - .Net Framework 3.5 or above.
+- Unity 5.0 or above.
 
-## Scheme
-- Control the Z axis displacement of button switch to show it down, lock and rebound effect.
-- Control the Z axis angle of knob switch to show it rotate effect.
-- Control the X and Y axis angle of rocker handle to show it rock around center effect.
+## Platform
 
-## Achieve
-- Button switch, self lock switch.
-- Knob switch.
-- Rocker handle.
-- Simple LED light.
+- Windows
+
+## Implemented
+
+```C#
+public class LED : MonoLED{}
+public class Button : MonoElement, IButton{}
+public class Knob : MonoElement, IKnob{}
+public class Rocker : MonoElement, IRocker{}
+```
+
+## Usage
+
+1. Add the component to your game object.
+2. Set the parameters of the component.
 
 ## Demo
-- Prefabs in the path "MGS-Equipment/Prefabs" provide reference to you.
-- Demos in the path "MGS-Equipment/Scenes" provide reference to you.
+- Demos in the path "MGS.Packages/Element/Demo/" provide reference to you.
 
 ## Preview
 - Button
 
-![Button Switch](./Attachment/README_Image/Button.gif)
+![Button Switch](./Attachment/images/Button.gif)
 
 - Knob
 
-![Knob Switch](./Attachment/README_Image/Knob.gif)
+![Knob Switch](./Attachment/images/Knob.gif)
 
 - Rocker
 
-![Rocker Handle](./Attachment/README_Image/Rocker.gif)﻿
+![Rocker Handle](./Attachment/images/Rocker.gif)
 
-## Contact
-- If you have any questions, feel free to contact me at mogoson@outlook.com.
+------
+
+Copyright © 2021 Mogoson.	mogoson@outlook.com
