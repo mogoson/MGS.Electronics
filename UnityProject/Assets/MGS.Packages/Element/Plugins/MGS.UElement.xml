@@ -421,6 +421,11 @@
             Awake component.
             </summary>
         </member>
+        <member name="M:MGS.Element.Rocker.OnMouseDown">
+            <summary>
+            Down rocker.
+            </summary>
+        </member>
         <member name="M:MGS.Element.Rocker.OnMouseDrag">
             <summary>
             Drag rocker.
