@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>MGS.UElement</name>
+        <name>MGS.Element</name>
     </assembly>
     <members>
         <member name="T:MGS.Element.Button">

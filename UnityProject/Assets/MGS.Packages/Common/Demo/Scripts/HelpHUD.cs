@@ -14,11 +14,13 @@ using UnityEngine;
 
 namespace MGS.Common.Demo
 {
+    [ExecuteInEditMode]
     public class HelpHUD : MonoBehaviour
     {
         #region Field and Property
         [Multiline]
         public string info = "Help info.";
+        public Color color = Color.black;
 
         public float top = 10;
         public float left = 10;
@@ -32,6 +34,7 @@ namespace MGS.Common.Demo
 
         private void DrawHelpHUD()
         {
+            GUI.color = color;
             GUILayout.Space(top);
             GUILayout.BeginHorizontal();
             GUILayout.Space(left);
