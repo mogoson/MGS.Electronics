@@ -1,6 +1,6 @@
 [TOC]
 
-# MGS.Element
+# MGS.Electronics
 
 ## Summary
 - Unity plugin for make electronic element in scene.
@@ -13,22 +13,13 @@
 
 - Windows
 
-## Implemented
-
-```C#
-public class LED : MonoLED{}
-public class Button : MonoElement, IButton{}
-public class Knob : MonoElement, IKnob{}
-public class Rocker : MonoElement, IRocker{}
-```
-
 ## Usage
 
 1. Add the component to your game object.
 2. Set the parameters of the component.
 
 ## Demo
-- Demos in the path "MGS.Packages/Element/Demo/" provide reference to you.
+- Demos in the path "MGS.Packages/Electronics/Demo/" provide reference to you.
 
 ## Preview
 - Button
