@@ -21,19 +21,6 @@
 ## Demo
 - Demos in the path "MGS.Packages/Electronics/Demo/" provide reference to you.
 
-## Preview
-- Button
-
-![Button Switch](./Attachment/images/Button.gif)
-
-- Knob
-
-![Knob Switch](./Attachment/images/Knob.gif)
-
-- Rocker
-
-![Rocker Handle](./Attachment/images/Rocker.gif)
-
 ------
 
 Copyright © 2021 Mogoson.	mogoson@outlook.com
