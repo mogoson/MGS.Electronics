@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2021 Mogoson. All rights reserved.
+ *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  SceneEditor.cs
  *  Description  :  Define scene editor.
@@ -10,14 +10,15 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System;
 using UnityEditor;
 using UnityEngine;
 
-#if UNITY_5_3 || UNITY_5_3 || UNITY_5_3_OR_NEWER
+#if UNITY_5_3_OR_NEWER
 using UnityEditor.SceneManagement;
 #endif
 
-namespace MGS.Electronics.Editors
+namespace MGS.Common.Editors
 {
     public class SceneEditor : Editor
     {
@@ -29,10 +30,15 @@ namespace MGS.Electronics.Editors
         protected readonly Handles.DrawCapFunction SphereCap = Handles.SphereCap;
 #endif
         protected readonly Color TransparentCyan = new Color(0, 1, 1, 0.1f);
+        protected readonly Vector3 MoveSnap = Vector3.one;
 
         protected const float NodeSize = 0.125f;
         protected const float AreaRadius = 1.25f;
         protected const float ArrowLength = 2f;
+        protected const float LineLength = 10;
+
+        protected const float FixedAreaRadius = 0.5f;
+        protected const float FixedArrowLength = 0.75f;
 
         protected void DrawCircleCap(Vector3 position, Quaternion rotation, float size)
         {
@@ -100,6 +106,61 @@ namespace MGS.Electronics.Editors
             DrawSphereArrow(start, direction, length * GetHandleSize(start), size, text);
         }
 
+        protected void DrawPositionHandle(Transform transform)
+        {
+            EditorGUI.BeginChangeCheck();
+            var position = Handles.PositionHandle(transform.position, GetPivotRotation(transform));
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(transform, "CHANGE_POSITION_HANDLE");
+                transform.position = position;
+                MarkSceneDirty();
+            }
+        }
+
+        protected void DrawRotationHandle(Transform transform)
+        {
+            EditorGUI.BeginChangeCheck();
+            var rotation = Handles.RotationHandle(transform.rotation, transform.position);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(transform, "CHANGE_ROTATION_HANDLE");
+                transform.rotation = rotation;
+                MarkSceneDirty();
+            }
+        }
+
+#if UNITY_5_5_OR_NEWER
+        protected void DrawFreeMoveHandle(Vector3 position, Quaternion rotation, float size, Vector3 snap, Handles.CapFunction capFunc, Action<Vector3> callback)
+#else
+        protected void DrawFreeMoveHandle(Vector3 position, Quaternion rotation, float size, Vector3 snap, Handles.DrawCapFunction capFunc, Action<Vector3> callback)
+#endif
+        {
+            EditorGUI.BeginChangeCheck();
+            var newPosition = Handles.FreeMoveHandle(position, Quaternion.identity, GetHandleSize(position) * size, snap, capFunc);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(target, "CHANGE_FREE_MOVE_HANDLE");
+                InvokeAction(callback, newPosition);
+                MarkSceneDirty();
+            }
+        }
+
+#if UNITY_5_5_OR_NEWER
+        protected void DrawAdaptiveButton(Vector3 position, Quaternion direction, float size, float pickSize, Handles.CapFunction capFunc, Action callback)
+#else
+        protected void DrawAdaptiveButton(Vector3 position, Quaternion direction, float size, float pickSize, Handles.DrawCapFunction capFunc, Action callback)
+#endif
+        {
+            var scale = GetHandleSize(position);
+            if (Handles.Button(position, direction, size * scale, pickSize * scale, capFunc))
+            {
+                Undo.RecordObject(target, "CLICK_BUTTON");
+                InvokeAction(callback);
+                MarkSceneDirty();
+            }
+        }
+
         protected float GetHandleSize(Vector3 position)
         {
             return HandleUtility.GetHandleSize(position);
@@ -119,11 +180,27 @@ namespace MGS.Electronics.Editors
 
         protected void MarkSceneDirty()
         {
-#if UNITY_5_3 || UNITY_5_3_OR_NEWER
+#if UNITY_5_3_OR_NEWER
             EditorSceneManager.MarkAllScenesDirty();
 #else
             EditorApplication.MarkSceneDirty();
 #endif
+        }
+
+        protected void InvokeAction(Action action)
+        {
+            if (action != null)
+            {
+                action.Invoke();
+            }
+        }
+
+        protected void InvokeAction<T>(Action<T> action, T arg)
+        {
+            if (action != null)
+            {
+                action.Invoke(arg);
+            }
         }
     }
 }
