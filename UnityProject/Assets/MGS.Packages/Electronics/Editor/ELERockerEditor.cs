@@ -46,14 +46,14 @@ namespace MGS.Electronics.Editors
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
-            Handles.color = Color.cyan;
+            Handles.color = Color.white;
             DrawAdaptiveSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
             DrawAdaptiveSphereArrow(Target.transform.position, -Target.transform.forward, ArrowLength, NodeSize);
 
             var fromAxis = Quaternion.AngleAxis(Target.RadiusAngle, CrossAxis) * ZeroAxis;
             DrawAdaptiveWireArc(Target.transform.position, ZeroAxis, fromAxis, 360, AreaRadius);
 
-            Handles.color = TransparentCyan;
+            Handles.color = TransparentWhite;
             DrawAdaptiveSolidArc(Target.transform.position, ZeroAxis, fromAxis, 360, AreaRadius);
         }
         #endregion

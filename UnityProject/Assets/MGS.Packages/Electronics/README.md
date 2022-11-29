@@ -5,6 +5,10 @@
 ## Summary
 - Unity plugin for make electronic element in scene.
 
+## Version
+
+- 1.1.1
+
 ## Environment
 - .Net Framework 3.5 or above.
 - Unity 5.0 or above.

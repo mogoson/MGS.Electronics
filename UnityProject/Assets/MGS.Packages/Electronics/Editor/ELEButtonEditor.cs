@@ -44,7 +44,7 @@ namespace MGS.Electronics.Editors
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
-            Handles.color = Color.cyan;
+            Handles.color = Color.white;
             DrawAdaptiveSphereCap(ZeroPoint, Quaternion.identity, NodeSize);
             DrawAdaptiveSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
             DrawSphereArrow(ZeroPoint, Target.transform.forward, Target.DownOffset, NodeSize);

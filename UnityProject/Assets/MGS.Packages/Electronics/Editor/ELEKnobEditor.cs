@@ -44,7 +44,7 @@ namespace MGS.Electronics.Editors
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
-            Handles.color = Color.cyan;
+            Handles.color = Color.white;
             DrawAdaptiveSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
             DrawAdaptiveCircleCap(Target.transform.position, Target.transform.rotation, AreaRadius);
             DrawAdaptiveSphereArrow(Target.transform.position, Target.transform.forward, ArrowLength, NodeSize, "Axis");
@@ -52,7 +52,7 @@ namespace MGS.Electronics.Editors
             DrawAdaptiveSphereArrow(Target.transform.position, ZeroAxis, ArrowLength, NodeSize, "Zero");
             DrawAdaptiveSphereArrow(Target.transform.position, Target.transform.up, AreaRadius, NodeSize);
 
-            Handles.color = TransparentCyan;
+            Handles.color = TransparentWhite;
             if (Target.RotateLimit)
             {
                 var fromAxis = Quaternion.AngleAxis(Target.AngleRange.min, Target.transform.forward) * ZeroAxis;
@@ -65,7 +65,7 @@ namespace MGS.Electronics.Editors
 
             if (Target.Adsorbent)
             {
-                Handles.color = Color.cyan;
+                Handles.color = Color.white;
                 foreach (var adsorbent in Target.AdsorbableAngles)
                 {
                     var adsorbentAxis = Quaternion.AngleAxis(adsorbent, Target.transform.forward) * ZeroAxis;
