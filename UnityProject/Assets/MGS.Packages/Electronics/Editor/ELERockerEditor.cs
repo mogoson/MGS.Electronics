@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Editors;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,7 +17,7 @@ namespace MGS.Electronics.Editors
 {
     [CustomEditor(typeof(ELERocker), true)]
     [CanEditMultipleObjects]
-    public class ELERockerEditor : SceneEditor
+    public class ELERockerEditor : ELEEditor
     {
         #region Field and Property 
         protected ELERocker Target { get { return target as ELERocker; } }
@@ -46,14 +45,14 @@ namespace MGS.Electronics.Editors
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
-            Handles.color = Color.white;
+            Handles.color = HandleColor;
             DrawAdaptiveSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
             DrawAdaptiveSphereArrow(Target.transform.position, -Target.transform.forward, ArrowLength, NodeSize);
 
             var fromAxis = Quaternion.AngleAxis(Target.RadiusAngle, CrossAxis) * ZeroAxis;
             DrawAdaptiveWireArc(Target.transform.position, ZeroAxis, fromAxis, 360, AreaRadius);
 
-            Handles.color = TransparentWhite;
+            Handles.color = AreaColor;
             DrawAdaptiveSolidArc(Target.transform.position, ZeroAxis, fromAxis, 360, AreaRadius);
         }
         #endregion

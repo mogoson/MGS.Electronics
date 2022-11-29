@@ -10,7 +10,6 @@
  *  DeTargetion  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Editors;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,7 +17,7 @@ namespace MGS.Electronics.Editors
 {
     [CustomEditor(typeof(ELEKnob), true)]
     [CanEditMultipleObjects]
-    public class ELEKnobEditor : SceneEditor
+    public class ELEKnobEditor : ELEEditor
     {
         #region Field and Property 
         protected ELEKnob Target { get { return target as ELEKnob; } }
@@ -44,7 +43,7 @@ namespace MGS.Electronics.Editors
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
-            Handles.color = Color.white;
+            Handles.color = HandleColor;
             DrawAdaptiveSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
             DrawAdaptiveCircleCap(Target.transform.position, Target.transform.rotation, AreaRadius);
             DrawAdaptiveSphereArrow(Target.transform.position, Target.transform.forward, ArrowLength, NodeSize, "Axis");
@@ -52,7 +51,7 @@ namespace MGS.Electronics.Editors
             DrawAdaptiveSphereArrow(Target.transform.position, ZeroAxis, ArrowLength, NodeSize, "Zero");
             DrawAdaptiveSphereArrow(Target.transform.position, Target.transform.up, AreaRadius, NodeSize);
 
-            Handles.color = TransparentWhite;
+            Handles.color = AreaColor;
             if (Target.RotateLimit)
             {
                 var fromAxis = Quaternion.AngleAxis(Target.AngleRange.min, Target.transform.forward) * ZeroAxis;
@@ -65,7 +64,7 @@ namespace MGS.Electronics.Editors
 
             if (Target.Adsorbent)
             {
-                Handles.color = Color.white;
+                Handles.color = HandleColor;
                 foreach (var adsorbent in Target.AdsorbableAngles)
                 {
                     var adsorbentAxis = Quaternion.AngleAxis(adsorbent, Target.transform.forward) * ZeroAxis;

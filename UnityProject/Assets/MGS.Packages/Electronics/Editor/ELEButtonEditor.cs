@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Editors;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,7 +17,7 @@ namespace MGS.Electronics.Editors
 {
     [CustomEditor(typeof(ELEButton), true)]
     [CanEditMultipleObjects]
-    public class ELEButtonEditor : SceneEditor
+    public class ELEButtonEditor : ELEEditor
     {
         #region Field and Property 
         protected ELEButton Target { get { return target as ELEButton; } }
@@ -44,7 +43,7 @@ namespace MGS.Electronics.Editors
         #region Protected Method
         protected virtual void OnSceneGUI()
         {
-            Handles.color = Color.white;
+            Handles.color = HandleColor;
             DrawAdaptiveSphereCap(ZeroPoint, Quaternion.identity, NodeSize);
             DrawAdaptiveSphereCap(Target.transform.position, Quaternion.identity, NodeSize);
             DrawSphereArrow(ZeroPoint, Target.transform.forward, Target.DownOffset, NodeSize);
