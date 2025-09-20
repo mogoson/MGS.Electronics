@@ -5,22 +5,18 @@
 ## Summary
 - Unity plugin for make electronic element in scene.
 
-## Environment
-- .Net Framework 3.5 or above.
-- Unity 5.0 or above.
+## Install
 
-## Platform
+- Unity --> Window --> Package Manager --> "+" --> Add package from git URL...
 
-- Windows
+  ```text
+  https://github.com/mogoson/MGS.Electronics.git?path=/Assets
+  ```
 
-## Usage
+## Samples
 
-1. Add the component to your game object.
-2. Set the parameters of the component.
-
-## Demo
-- Demos in the path "MGS.Packages/Electronics/Demo/" provide reference to you.
+- Unity --> Window --> Package Manager --> Packages-Mogoson --> Electronics --> Samples.
 
 ------
 
-Copyright © 2021 Mogoson.	mogoson@outlook.com
+Copyright © 2025 Mogoson.	mogoson@outlook.com

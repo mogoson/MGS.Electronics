@@ -1,0 +1,25 @@
+{
+    "name": "com.mgs.electronics",
+    "version": "1.0.0",
+    "displayName": "Electronics",
+    "description": "Unity plugin for make electronic element in scene.",
+    "unity": "2021.3",
+    "keywords": [
+        "electronics",
+        "button",
+        "knob",
+        "rocker"
+    ],
+    "author": {
+        "name": "Mogoson",
+        "email": "mogoson@outlook.com",
+        "url": "https://github.com/mogoson"
+    },
+    "samples": [
+        {
+            "displayName": "Sample",
+            "description": "Sample for electronic element",
+            "path": "Samples~/Sample"
+        }
+    ]
+}
