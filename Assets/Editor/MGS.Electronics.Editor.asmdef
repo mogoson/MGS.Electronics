@@ -2,7 +2,8 @@
     "name": "MGS.Electronics.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:fccb8422c3d30da4f959cd01077861e3"
+        "MGS.BaseEditor",
+        "MGS.Electronics"
     ],
     "includePlatforms": [
         "Editor"
